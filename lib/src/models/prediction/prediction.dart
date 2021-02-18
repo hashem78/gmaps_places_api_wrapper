@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
+
 import 'package:gmaps_places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
 import 'package:gmaps_places_api_wrapper/src/models/structuredformatting/structuredformatting.dart';
 

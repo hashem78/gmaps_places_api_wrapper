@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_types.dart';
 import 'package:http/http.dart' as http;
 import 'package:gmaps_places_api_wrapper/src/enums/languages.dart';
 import 'package:gmaps_places_api_wrapper/src/enums/place_details_fields.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
+
 import 'package:gmaps_places_api_wrapper/src/enums/ranking_method.dart';
 import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 

@@ -1,4 +1,4 @@
-import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_types.dart';
 import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 import 'package:gmaps_places_api_wrapper/src/models/glocation/glocation.dart';
 
