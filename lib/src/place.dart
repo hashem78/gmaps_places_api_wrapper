@@ -5,11 +5,13 @@ import 'package:places_api_wrapper/src/enums/languages.dart';
 import 'package:places_api_wrapper/src/enums/place_details_fields.dart';
 import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
 import 'package:places_api_wrapper/src/enums/ranking_method.dart';
+
 import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
 import 'package:places_api_wrapper/src/models/nearby_response/nearby_search_response.dart';
 import 'package:places_api_wrapper/src/models/place_details_response/place_details_response.dart';
 import 'package:places_api_wrapper/src/models/textsearch_response/text_search_response.dart';
 
+import 'models/autocomplete/autocomplete_response.dart';
 import 'models/place_response/place_response.dart';
 
 class GPlaces {
@@ -20,6 +22,8 @@ class GPlaces {
       'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
   static const String _placedetailsEndPoint =
       'https://maps.googleapis.com/maps/api/place/details/json?';
+  static const String _autocompleteEndPoint =
+      'https://maps.googleapis.com/maps/api/place/autocomplete/json?';
 
   static Future<FindPlaceResponse> findPlaceFromText(
     String input,
@@ -36,7 +40,7 @@ class GPlaces {
         (language == null ? false : true) ? '&language=$language' : '';
     var fixedEndpoint =
         '${_findPlaceFromTextEndPoint}key=$key&input=$input&inputtype=$inputtype$fixedFields$fixedlanguage';
-    print(fixedEndpoint);
+
     final response = await http.get(fixedEndpoint);
     final body = response.body;
     return FindPlaceResponse.fromJson(jsonDecode(body));
@@ -88,7 +92,7 @@ class GPlaces {
 
     final fixedEndpoint =
         '$_nearbysearchEndPoint$fixedLocation$fixedRadius$fixedKeyword$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedRankby$fixedPageToken&key=$key';
-    print(fixedEndpoint);
+
     final respone = await http.get(fixedEndpoint);
     return NearbySearchResponse.fromJson(
       jsonDecode(respone.body),
@@ -138,7 +142,7 @@ class GPlaces {
 
     final fixedEndpoint =
         '$_nearbysearchEndPoint$fixedQuery$fixedLocation$fixedRadius$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedPageToken&key=$key';
-    print(fixedEndpoint);
+
     final respone = await http.get(fixedEndpoint);
     return TextSearchResponse.fromJson(
       jsonDecode(respone.body),
@@ -173,8 +177,65 @@ class GPlaces {
     ).replaceFirst(',', '');
     final fixedEndpoint =
         '$_placedetailsEndPoint$fixedPlaceId$fixedLanguage$fixedRegion$fixedsessionToken$fixedFields&key=$key';
-    print(fixedEndpoint);
+
     final response = await http.get(fixedEndpoint);
     return PlaceDetailsResponse.fromJson(jsonDecode(response.body));
+  }
+
+  static Future<AutocompleteResponse> autocomplete(
+    String input, {
+    String sessiontoken,
+    int offset,
+    GLocation origin,
+    GLocation location,
+    int radius,
+    Language language,
+    List<PlaceType> types,
+    List<String> components,
+  }) async {
+    assert(
+      input != null,
+      'Input can not be null',
+    );
+    if (components != null) {
+      assert(components.length <= 5, 'components.length > 5');
+    }
+    final fixedInput = 'input=$input';
+    final fixedSessionToken = (sessiontoken == null ? false : true)
+        ? '&sessiontoken=$sessiontoken'
+        : '';
+    final fixedOffset =
+        (offset == null ? false : true) ? '&offset=$offset' : '';
+    final fixedOrigin =
+        (origin == null ? false : true) ? '&origin=$origin' : '';
+    final fixedLocation =
+        (location == null ? false : true) ? '&location=$location' : '';
+    final fixedRadius =
+        (radius == null ? false : true) ? '&radius=$radius' : '';
+    final fixedLanguage = (language == null ? false : true)
+        ? '&language=${EnumToString.convertToString(language)}'
+        : '';
+    final fixedTypes = (language == null ? false : true)
+        ? types.fold<String>(
+            '&types=',
+            (prev, next) {
+              return '$prev,$next';
+            },
+          ).replaceFirst(',', '')
+        : '';
+    final fixedComponents = (components == null ? false : true)
+        ? components.fold(
+            '&components=',
+            (prev, next) {
+              return '$prev|country:$next';
+            },
+          ).replaceFirst('|', '')
+        : '';
+    final fixedEnpoint =
+        '$_autocompleteEndPoint$fixedInput$fixedSessionToken$fixedOffset$fixedOrigin$fixedLocation$fixedRadius$fixedLanguage$fixedTypes$fixedComponents&key=$key';
+
+    final response = await http.get(fixedEnpoint);
+
+    return AutocompleteResponse.fromJson(jsonDecode(response.body));
   }
 }

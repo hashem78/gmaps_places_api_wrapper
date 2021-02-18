@@ -79,4 +79,5 @@ const _$ResponseStatusEnumMap = {
   ResponseStatus.REQUEST_DENIED: 'REQUEST_DENIED',
   ResponseStatus.INVALID_REQUEST: 'INVALID_REQUEST',
   ResponseStatus.UNKNOWN_ERROR: 'UNKNOWN_ERROR',
+  ResponseStatus.NOT_FOUND: 'NOT_FOUND',
 };

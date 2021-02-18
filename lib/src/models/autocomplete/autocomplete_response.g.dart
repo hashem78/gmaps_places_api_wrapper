@@ -1,42 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'text_search_response.dart';
+part of 'autocomplete_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-TextSearchResponse _$TextSearchResponseFromJson(Map<String, dynamic> json) {
-  return $checkedNew('TextSearchResponse', json, () {
-    final val = TextSearchResponse(
-      htmlAttributions:
-          $checkedConvert(json, 'html_attributions', (v) => v as List),
-      nextPageToken:
-          $checkedConvert(json, 'next_page_token', (v) => v as String),
-      results: $checkedConvert(
+AutocompleteResponse _$AutocompleteResponseFromJson(Map<String, dynamic> json) {
+  return $checkedNew('AutocompleteResponse', json, () {
+    final val = AutocompleteResponse(
+      status: $checkedConvert(json, 'status',
+          (v) => _$enumDecodeNullable(_$ResponseStatusEnumMap, v)),
+      predictions: $checkedConvert(
           json,
-          'results',
+          'predictions',
           (v) => (v as List)
               ?.map((e) => e == null
                   ? null
-                  : TextSearchResult.fromJson(e as Map<String, dynamic>))
+                  : Prediction.fromJson(e as Map<String, dynamic>))
               ?.toList()),
-      status: $checkedConvert(json, 'status',
-          (v) => _$enumDecodeNullable(_$ResponseStatusEnumMap, v)),
     );
     return val;
-  }, fieldKeyMap: const {
-    'htmlAttributions': 'html_attributions',
-    'nextPageToken': 'next_page_token'
   });
 }
 
-Map<String, dynamic> _$TextSearchResponseToJson(TextSearchResponse instance) =>
+Map<String, dynamic> _$AutocompleteResponseToJson(
+        AutocompleteResponse instance) =>
     <String, dynamic>{
-      'html_attributions': instance.htmlAttributions,
-      'next_page_token': instance.nextPageToken,
-      'results': instance.results?.map((e) => e?.toJson())?.toList(),
       'status': _$ResponseStatusEnumMap[instance.status],
+      'predictions': instance.predictions?.map((e) => e?.toJson())?.toList(),
     };
 
 T _$enumDecode<T>(
