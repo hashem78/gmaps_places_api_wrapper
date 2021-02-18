@@ -138,4 +138,5 @@ enum PlaceType {
   sublocality_level_5,
   subpremise,
   town_square,
+  grocery_or_supermarket,
 }

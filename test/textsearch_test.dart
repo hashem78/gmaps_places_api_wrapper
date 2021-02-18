@@ -1,4 +1,3 @@
-import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
 import 'package:places_api_wrapper/src/enums/response_status.dart';
 import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
 
@@ -12,16 +11,15 @@ void main() {
     },
   );
   test(
-    'should check if find place response is OK',
+    'should check if textsearch response is OK',
     () async {
       // arrange
 
       // act
-      var response = await GPlaces.nearbysearch(
-        GLocation(lat: -33.8670522, lng: 151.1957362),
-        radius: 1500,
-        type: PlaceType.restaurant,
-        keyword: 'cruise',
+      var response = await GPlaces.textsearch(
+        'restaurants in Sydney',
+        location: GLocation(lat: 42.3675294, lng: -71.186966),
+        radius: 10000,
       );
       // assert
       expect(response.status, equals(ResponseStatus.OK));

@@ -1,16 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'nearby_search_result.dart';
+part of 'text_search_result.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
-  return $checkedNew('NearbySearchResult', json, () {
-    final val = NearbySearchResult(
+TextSearchResult _$TextSearchResultFromJson(Map<String, dynamic> json) {
+  return $checkedNew('TextSearchResult', json, () {
+    final val = TextSearchResult(
       businessStatus: $checkedConvert(json, 'businessStatus',
           (v) => _$enumDecodeNullable(_$BusinessStatusEnumMap, v)),
+      formattedAddress:
+          $checkedConvert(json, 'formattedAddress', (v) => v as String),
       geometry: $checkedConvert(
           json,
           'geometry',
@@ -48,17 +50,15 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
               ?.toList()),
       userRatingsTotal:
           $checkedConvert(json, 'userRatingsTotal', (v) => v as int),
-      vicinity: $checkedConvert(json, 'vicinity', (v) => v as String),
-      permanentlyClosed:
-          $checkedConvert(json, 'permanentlyClosed', (v) => v as bool),
     );
     return val;
   });
 }
 
-Map<String, dynamic> _$NearbySearchResultToJson(NearbySearchResult instance) =>
+Map<String, dynamic> _$TextSearchResultToJson(TextSearchResult instance) =>
     <String, dynamic>{
       'businessStatus': _$BusinessStatusEnumMap[instance.businessStatus],
+      'formattedAddress': instance.formattedAddress,
       'geometry': instance.geometry?.toJson(),
       'icon': instance.icon,
       'name': instance.name,
@@ -71,8 +71,6 @@ Map<String, dynamic> _$NearbySearchResultToJson(NearbySearchResult instance) =>
       'reference': instance.reference,
       'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e])?.toList(),
       'userRatingsTotal': instance.userRatingsTotal,
-      'vicinity': instance.vicinity,
-      'permanentlyClosed': instance.permanentlyClosed,
     };
 
 T _$enumDecode<T>(

@@ -6,6 +6,7 @@ import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
 import 'package:places_api_wrapper/src/enums/ranking_method.dart';
 import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
 import 'package:places_api_wrapper/src/models/nearby_response/nearby_search_response.dart';
+import 'package:places_api_wrapper/src/models/textsearch_response/text_search_response.dart';
 
 import 'models/place_response/place_response.dart';
 
@@ -86,6 +87,56 @@ class GPlaces {
     print(fixedEndpoint);
     final respone = await http.get(fixedEndpoint);
     return NearbySearchResponse.fromJson(
+      jsonDecode(respone.body),
+    );
+  }
+
+  static Future<TextSearchResponse> textsearch(
+    String query, {
+    String region,
+    // ignore: always_require_non_null_named_parameters
+    GLocation location,
+    int radius,
+    Language language,
+    int minprice,
+    int maxprice,
+    String name,
+    bool opennow,
+    PlaceType type,
+    String pageToken,
+  }) async {
+    assert(
+      location != null,
+      "Location can't be null",
+    );
+    final fixedQuery = 'query=$query';
+    final fixedLocation =
+        (location == null ? false : true) ? '&location=$location' : '';
+
+    final fixedRadius =
+        (radius == null ? false : true) ? '&radius=$radius' : '';
+
+    final fixedLanguage = (language == null ? false : true)
+        ? '&language=${EnumToString.convertToString(language)}'
+        : '';
+    final fixedMinPrice =
+        (minprice == null ? false : true) ? '&minprice=$minprice' : '';
+    final fixedMaxPrice =
+        (maxprice == null ? false : true) ? '&minprice=$maxprice' : '';
+    final fixedName = (name == null ? false : true) ? '&name=$name' : '';
+    final fixedOpennow = (opennow == null ? false : true) ? '&opennow' : '';
+    final fixedPlaceType = (type == null ? false : true)
+        ? '&type=${EnumToString.convertToString(type)}'
+        : '';
+
+    final fixedPageToken =
+        (pageToken == null ? false : true) ? '&pageToken=$pageToken' : '';
+
+    final fixedEndpoint =
+        '$_nearbysearchEndPoint$fixedQuery$fixedLocation$fixedRadius$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedPageToken&key=$key';
+    print(fixedEndpoint);
+    final respone = await http.get(fixedEndpoint);
+    return TextSearchResponse.fromJson(
       jsonDecode(respone.body),
     );
   }
