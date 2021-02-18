@@ -10,7 +10,7 @@ part 'photos.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Photo extends Equatable {
-  Photo({
+  const Photo({
     this.height,
     this.htmlAttributions,
     this.photoReference,

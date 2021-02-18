@@ -1,15 +1,16 @@
 import 'dart:convert';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:http/http.dart' as http;
-import 'package:places_api_wrapper/src/enums/languages.dart';
-import 'package:places_api_wrapper/src/enums/place_details_fields.dart';
-import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
-import 'package:places_api_wrapper/src/enums/ranking_method.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/languages.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_details_fields.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/ranking_method.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
-import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
-import 'package:places_api_wrapper/src/models/nearby_response/nearby_search_response.dart';
-import 'package:places_api_wrapper/src/models/place_details_response/place_details_response.dart';
-import 'package:places_api_wrapper/src/models/textsearch_response/text_search_response.dart';
+import 'package:gmaps_places_api_wrapper/src/models/glocation/glocation.dart';
+import 'package:gmaps_places_api_wrapper/src/models/nearby_response/nearby_search_response.dart';
+import 'package:gmaps_places_api_wrapper/src/models/place_details_response/place_details_response.dart';
+import 'package:gmaps_places_api_wrapper/src/models/textsearch_response/text_search_response.dart';
 
 import 'models/autocomplete/autocomplete_response.dart';
 import 'models/place_response/place_response.dart';
@@ -40,10 +41,13 @@ class GPlaces {
         (language == null ? false : true) ? '&language=$language' : '';
     var fixedEndpoint =
         '${_findPlaceFromTextEndPoint}key=$key&input=$input&inputtype=$inputtype$fixedFields$fixedlanguage';
-
-    final response = await http.get(fixedEndpoint);
-    final body = response.body;
-    return FindPlaceResponse.fromJson(jsonDecode(body));
+    try {
+      final response = await http.get(fixedEndpoint);
+      final body = response.body;
+      return FindPlaceResponse.fromJson(jsonDecode(body));
+    } catch (e) {
+      return const FindPlaceResponse(status: ResponseStatus.UNKNOWN_ERROR);
+    }
   }
 
   static Future<NearbySearchResponse> nearbysearch(
@@ -93,10 +97,13 @@ class GPlaces {
     final fixedEndpoint =
         '$_nearbysearchEndPoint$fixedLocation$fixedRadius$fixedKeyword$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedRankby$fixedPageToken&key=$key';
 
-    final respone = await http.get(fixedEndpoint);
-    return NearbySearchResponse.fromJson(
-      jsonDecode(respone.body),
-    );
+    try {
+      final response = await http.get(fixedEndpoint);
+      final body = response.body;
+      return NearbySearchResponse.fromJson(jsonDecode(body));
+    } catch (e) {
+      return const NearbySearchResponse(status: ResponseStatus.UNKNOWN_ERROR);
+    }
   }
 
   static Future<TextSearchResponse> textsearch(
@@ -143,10 +150,13 @@ class GPlaces {
     final fixedEndpoint =
         '$_nearbysearchEndPoint$fixedQuery$fixedLocation$fixedRadius$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedPageToken&key=$key';
 
-    final respone = await http.get(fixedEndpoint);
-    return TextSearchResponse.fromJson(
-      jsonDecode(respone.body),
-    );
+    try {
+      final response = await http.get(fixedEndpoint);
+      final body = response.body;
+      return TextSearchResponse.fromJson(jsonDecode(body));
+    } catch (e) {
+      return const TextSearchResponse(status: ResponseStatus.UNKNOWN_ERROR);
+    }
   }
 
   static Future<PlaceDetailsResponse> placedetails(
@@ -178,8 +188,13 @@ class GPlaces {
     final fixedEndpoint =
         '$_placedetailsEndPoint$fixedPlaceId$fixedLanguage$fixedRegion$fixedsessionToken$fixedFields&key=$key';
 
-    final response = await http.get(fixedEndpoint);
-    return PlaceDetailsResponse.fromJson(jsonDecode(response.body));
+    try {
+      final response = await http.get(fixedEndpoint);
+      final body = response.body;
+      return PlaceDetailsResponse.fromJson(jsonDecode(body));
+    } catch (e) {
+      return const PlaceDetailsResponse(status: ResponseStatus.UNKNOWN_ERROR);
+    }
   }
 
   static Future<AutocompleteResponse> autocomplete(
@@ -231,11 +246,15 @@ class GPlaces {
             },
           ).replaceFirst('|', '')
         : '';
-    final fixedEnpoint =
+    final fixedEndpoint =
         '$_autocompleteEndPoint$fixedInput$fixedSessionToken$fixedOffset$fixedOrigin$fixedLocation$fixedRadius$fixedLanguage$fixedTypes$fixedComponents&key=$key';
 
-    final response = await http.get(fixedEnpoint);
-
-    return AutocompleteResponse.fromJson(jsonDecode(response.body));
+    try {
+      final response = await http.get(fixedEndpoint);
+      final body = response.body;
+      return AutocompleteResponse.fromJson(jsonDecode(body));
+    } catch (e) {
+      return const AutocompleteResponse(status: ResponseStatus.UNKNOWN_ERROR);
+    }
   }
 }

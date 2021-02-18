@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
-import 'package:places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
-import 'package:places_api_wrapper/src/models/structuredformatting/structuredformatting.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
+import 'package:gmaps_places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
+import 'package:gmaps_places_api_wrapper/src/models/structuredformatting/structuredformatting.dart';
 
-import 'package:places_api_wrapper/src/models/term/term.dart';
+import 'package:gmaps_places_api_wrapper/src/models/term/term.dart';
 
 part 'prediction.g.dart';
 
@@ -15,7 +15,7 @@ part 'prediction.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Prediction extends Equatable {
-  Prediction({
+  const Prediction({
     this.description,
     this.distanceMeters,
     this.id,

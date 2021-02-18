@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
+import 'package:gmaps_places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
 
 part 'structuredformatting.g.dart';
 
@@ -11,7 +11,7 @@ part 'structuredformatting.g.dart';
   fieldRename: FieldRename.snake,
 )
 class StructuredFormatting extends Equatable {
-  StructuredFormatting({
+  const StructuredFormatting({
     this.mainText,
     this.mainTextMatchedSubstrings,
     this.secondaryText,

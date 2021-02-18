@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
-import 'package:places_api_wrapper/src/models/viewport/viewport.dart';
+import 'package:gmaps_places_api_wrapper/src/models/glocation/glocation.dart';
+import 'package:gmaps_places_api_wrapper/src/models/viewport/viewport.dart';
 
 part 'geometry.g.dart';
 
@@ -12,7 +12,7 @@ part 'geometry.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Geometry extends Equatable {
-  Geometry({
+  const Geometry({
     this.location,
     this.viewport,
   });

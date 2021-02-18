@@ -1,7 +1,7 @@
-import 'package:places_api_wrapper/src/enums/place_details_fields.dart';
-import 'package:places_api_wrapper/src/enums/response_status.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_details_fields.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
-import 'package:places_api_wrapper/src/place.dart';
+import 'package:gmaps_places_api_wrapper/src/place.dart';
 import 'package:test/test.dart';
 
 void main() {

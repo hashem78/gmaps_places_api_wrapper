@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/enums/response_status.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
-import 'package:places_api_wrapper/src/models/textsearch_result/text_search_result.dart';
+import 'package:gmaps_places_api_wrapper/src/models/textsearch_result/text_search_result.dart';
 
 part 'text_search_response.g.dart';
 
@@ -13,7 +13,7 @@ part 'text_search_response.g.dart';
   fieldRename: FieldRename.snake,
 )
 class TextSearchResponse extends Equatable {
-  TextSearchResponse({
+  const TextSearchResponse({
     this.htmlAttributions,
     this.nextPageToken,
     this.results,

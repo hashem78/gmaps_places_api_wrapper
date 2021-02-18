@@ -10,7 +10,7 @@ part 'glocation.g.dart';
   fieldRename: FieldRename.snake,
 )
 class GLocation extends Equatable {
-  GLocation({
+  const GLocation({
     this.lat,
     this.lng,
   });

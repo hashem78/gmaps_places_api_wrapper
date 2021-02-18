@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/models/geometry/geometry.dart';
-import 'package:places_api_wrapper/src/models/opening_hours/openinghours.dart';
-import 'package:places_api_wrapper/src/models/photo/photos.dart';
+import 'package:gmaps_places_api_wrapper/src/models/geometry/geometry.dart';
+import 'package:gmaps_places_api_wrapper/src/models/opening_hours/openinghours.dart';
+import 'package:gmaps_places_api_wrapper/src/models/photo/photos.dart';
 
 part 'candidate.g.dart';
 
@@ -13,7 +13,7 @@ part 'candidate.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Candidate extends Equatable {
-  Candidate({
+  const Candidate({
     this.formattedAddress,
     this.geometry,
     this.name,

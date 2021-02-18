@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
+import 'package:gmaps_places_api_wrapper/src/models/glocation/glocation.dart';
 
 part 'viewport.g.dart';
 
@@ -11,7 +11,7 @@ part 'viewport.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Viewport extends Equatable {
-  Viewport({
+  const Viewport({
     this.northeast,
     this.southwest,
   });

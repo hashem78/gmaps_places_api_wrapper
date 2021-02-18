@@ -10,7 +10,7 @@ part 'review.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Review extends Equatable {
-  Review({
+  const Review({
     this.authorName,
     this.authorUrl,
     this.language,

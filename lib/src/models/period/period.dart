@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/models/sub_period/sub_period.dart';
+import 'package:gmaps_places_api_wrapper/src/models/sub_period/sub_period.dart';
 
 part 'period.g.dart';
 
@@ -14,7 +14,7 @@ class GPeriod extends Equatable {
   final SubPeriod open;
   final SubPeriod close;
 
-  GPeriod(this.open, this.close);
+  const GPeriod(this.open, this.close);
   factory GPeriod.fromJson(Map<String, dynamic> json) =>
       _$GPeriodFromJson(json);
   Map<String, dynamic> toJson() => _$GPeriodToJson(this);

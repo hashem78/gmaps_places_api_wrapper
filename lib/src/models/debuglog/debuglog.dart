@@ -10,7 +10,7 @@ part 'debuglog.g.dart';
   fieldRename: FieldRename.snake,
 )
 class DebugLog extends Equatable {
-  DebugLog({
+  const DebugLog({
     this.line,
   });
 

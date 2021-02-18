@@ -10,7 +10,7 @@ part 'address_component.g.dart';
   fieldRename: FieldRename.snake,
 )
 class AddressComponent extends Equatable {
-  AddressComponent({
+  const AddressComponent({
     this.longName,
     this.shortName,
     this.types,

@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:places_api_wrapper/src/enums/response_status.dart';
-import 'package:places_api_wrapper/src/models/prediction/prediction.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
+import 'package:gmaps_places_api_wrapper/src/models/prediction/prediction.dart';
 
 part 'autocomplete_response.g.dart';
 
@@ -13,7 +13,7 @@ part 'autocomplete_response.g.dart';
   fieldRename: FieldRename.snake,
 )
 class AutocompleteResponse extends Equatable {
-  AutocompleteResponse({
+  const AutocompleteResponse({
     this.status,
     this.predictions,
   });

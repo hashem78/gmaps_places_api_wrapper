@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:places_api_wrapper/src/enums/bussiness_status.dart';
-import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/bussiness_status.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/place_types_enum.dart';
 
-import 'package:places_api_wrapper/src/models/geometry/geometry.dart';
-import 'package:places_api_wrapper/src/models/opening_hours/openinghours.dart';
-import 'package:places_api_wrapper/src/models/photo/photos.dart';
-import 'package:places_api_wrapper/src/models/pluscode/pluscode.dart';
+import 'package:gmaps_places_api_wrapper/src/models/geometry/geometry.dart';
+import 'package:gmaps_places_api_wrapper/src/models/opening_hours/openinghours.dart';
+import 'package:gmaps_places_api_wrapper/src/models/photo/photos.dart';
+import 'package:gmaps_places_api_wrapper/src/models/pluscode/pluscode.dart';
 
 part 'nearby_search_result.g.dart';
 
@@ -18,7 +18,7 @@ part 'nearby_search_result.g.dart';
   fieldRename: FieldRename.snake,
 )
 class NearbySearchResult extends Equatable {
-  NearbySearchResult({
+  const NearbySearchResult({
     this.businessStatus,
     this.geometry,
     this.icon,

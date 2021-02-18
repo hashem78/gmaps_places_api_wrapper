@@ -10,7 +10,7 @@ part 'matchedsubstring.g.dart';
   fieldRename: FieldRename.snake,
 )
 class MatchedSubstring extends Equatable {
-  MatchedSubstring({
+  const MatchedSubstring({
     this.length,
     this.offset,
   });

@@ -10,7 +10,7 @@ part 'term.g.dart';
   fieldRename: FieldRename.snake,
 )
 class Term extends Equatable {
-  Term({
+  const Term({
     this.length,
     this.value,
     this.offset,

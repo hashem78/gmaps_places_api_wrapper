@@ -13,7 +13,7 @@ class SubPeriod extends Equatable {
   final int day;
   final String time;
 
-  SubPeriod(this.day, this.time);
+  const SubPeriod(this.day, this.time);
 
   factory SubPeriod.fromJson(Map<String, dynamic> json) =>
       _$SubPeriodFromJson(json);

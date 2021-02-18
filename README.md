@@ -8,7 +8,7 @@ Created from templates made available by Stagehand under a BSD-style
 A simple usage example:
 
 ```dart
-import 'package:places_api_wrapper/places_api_wrapper.dart';
+import 'package:gmaps_places_api_wrapper/places_api_wrapper.dart';
 
 main() {
   var awesome = new Awesome();

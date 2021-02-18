@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:places_api_wrapper/src/enums/response_status.dart';
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
-import 'package:places_api_wrapper/src/models/candidate/candidate.dart';
-import 'package:places_api_wrapper/src/models/debuglog/debuglog.dart';
+import 'package:gmaps_places_api_wrapper/src/models/candidate/candidate.dart';
+import 'package:gmaps_places_api_wrapper/src/models/debuglog/debuglog.dart';
 
 part 'place_response.g.dart';
 
@@ -14,7 +14,7 @@ part 'place_response.g.dart';
   fieldRename: FieldRename.snake,
 )
 class FindPlaceResponse extends Equatable {
-  FindPlaceResponse({
+  const FindPlaceResponse({
     this.candidates,
     this.debugLog,
     this.status,

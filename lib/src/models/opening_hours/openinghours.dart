@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:places_api_wrapper/src/models/period/period.dart';
+import 'package:gmaps_places_api_wrapper/src/models/period/period.dart';
 
 part 'openinghours.g.dart';
 
@@ -12,7 +12,7 @@ part 'openinghours.g.dart';
   fieldRename: FieldRename.snake,
 )
 class OpeningHours extends Equatable {
-  OpeningHours({
+  const OpeningHours({
     this.openNow,
     this.weekdayText,
     this.periods,
