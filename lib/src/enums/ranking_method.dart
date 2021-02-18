@@ -1,0 +1,4 @@
+enum RankingMethod {
+  prominence,
+  distance,
+}

@@ -1,0 +1,5 @@
+enum BusinessStatus {
+  OPERATIONAL,
+  CLOSED_TEMPORARILY,
+  CLOSED_PERMANENTLY,
+}
