@@ -5,4 +5,5 @@ enum ResponseStatus {
   REQUEST_DENIED,
   INVALID_REQUEST,
   UNKNOWN_ERROR,
+  NOT_FOUND,
 }
