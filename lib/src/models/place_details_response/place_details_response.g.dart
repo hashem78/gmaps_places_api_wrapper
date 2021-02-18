@@ -1,38 +1,34 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'place_response.dart';
+part of 'place_details_response.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-FindPlaceResponse _$FindPlaceResponseFromJson(Map<String, dynamic> json) {
-  return $checkedNew('FindPlaceResponse', json, () {
-    final val = FindPlaceResponse(
-      candidates: $checkedConvert(
+PlaceDetailsResponse _$PlaceDetailsResponseFromJson(Map<String, dynamic> json) {
+  return $checkedNew('PlaceDetailsResponse', json, () {
+    final val = PlaceDetailsResponse(
+      htmlAttributions:
+          $checkedConvert(json, 'html_attributions', (v) => v as List),
+      result: $checkedConvert(
           json,
-          'candidates',
-          (v) => (v as List)
-              ?.map((e) => e == null
-                  ? null
-                  : Candidate.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
-      debugLog: $checkedConvert(
-          json,
-          'debug_log',
-          (v) =>
-              v == null ? null : DebugLog.fromJson(v as Map<String, dynamic>)),
+          'result',
+          (v) => v == null
+              ? null
+              : PlaceDetailsResult.fromJson(v as Map<String, dynamic>)),
       status: $checkedConvert(json, 'status',
           (v) => _$enumDecodeNullable(_$ResponseStatusEnumMap, v)),
     );
     return val;
-  }, fieldKeyMap: const {'debugLog': 'debug_log'});
+  }, fieldKeyMap: const {'htmlAttributions': 'html_attributions'});
 }
 
-Map<String, dynamic> _$FindPlaceResponseToJson(FindPlaceResponse instance) =>
+Map<String, dynamic> _$PlaceDetailsResponseToJson(
+        PlaceDetailsResponse instance) =>
     <String, dynamic>{
-      'candidates': instance.candidates?.map((e) => e?.toJson())?.toList(),
-      'debug_log': instance.debugLog?.toJson(),
+      'html_attributions': instance.htmlAttributions,
+      'result': instance.result?.toJson(),
       'status': _$ResponseStatusEnumMap[instance.status],
     };
 

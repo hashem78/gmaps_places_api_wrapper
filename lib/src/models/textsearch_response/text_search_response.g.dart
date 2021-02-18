@@ -10,8 +10,9 @@ TextSearchResponse _$TextSearchResponseFromJson(Map<String, dynamic> json) {
   return $checkedNew('TextSearchResponse', json, () {
     final val = TextSearchResponse(
       htmlAttributions:
-          $checkedConvert(json, 'htmlAttributions', (v) => v as List),
-      nextPageToken: $checkedConvert(json, 'nextPageToken', (v) => v as String),
+          $checkedConvert(json, 'html_attributions', (v) => v as List),
+      nextPageToken:
+          $checkedConvert(json, 'next_page_token', (v) => v as String),
       results: $checkedConvert(
           json,
           'results',
@@ -24,13 +25,16 @@ TextSearchResponse _$TextSearchResponseFromJson(Map<String, dynamic> json) {
           (v) => _$enumDecodeNullable(_$ResponseStatusEnumMap, v)),
     );
     return val;
+  }, fieldKeyMap: const {
+    'htmlAttributions': 'html_attributions',
+    'nextPageToken': 'next_page_token'
   });
 }
 
 Map<String, dynamic> _$TextSearchResponseToJson(TextSearchResponse instance) =>
     <String, dynamic>{
-      'htmlAttributions': instance.htmlAttributions,
-      'nextPageToken': instance.nextPageToken,
+      'html_attributions': instance.htmlAttributions,
+      'next_page_token': instance.nextPageToken,
       'results': instance.results?.map((e) => e?.toJson())?.toList(),
       'status': _$ResponseStatusEnumMap[instance.status],
     };

@@ -9,6 +9,7 @@ part 'geometry.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class Geometry extends Equatable {
   Geometry({

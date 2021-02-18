@@ -8,6 +8,7 @@ part 'viewport.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class Viewport extends Equatable {
   Viewport({

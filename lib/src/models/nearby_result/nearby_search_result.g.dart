@@ -9,7 +9,7 @@ part of 'nearby_search_result.dart';
 NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
   return $checkedNew('NearbySearchResult', json, () {
     final val = NearbySearchResult(
-      businessStatus: $checkedConvert(json, 'businessStatus',
+      businessStatus: $checkedConvert(json, 'business_status',
           (v) => _$enumDecodeNullable(_$BusinessStatusEnumMap, v)),
       geometry: $checkedConvert(
           json,
@@ -20,7 +20,7 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
       name: $checkedConvert(json, 'name', (v) => v as String),
       openingHours: $checkedConvert(
           json,
-          'openingHours',
+          'opening_hours',
           (v) => v == null
               ? null
               : OpeningHours.fromJson(v as Map<String, dynamic>)),
@@ -31,13 +31,13 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
               ?.map((e) =>
                   e == null ? null : Photo.fromJson(e as Map<String, dynamic>))
               ?.toList()),
-      placeId: $checkedConvert(json, 'placeId', (v) => v as String),
+      placeId: $checkedConvert(json, 'place_id', (v) => v as String),
       plusCode: $checkedConvert(
           json,
-          'plusCode',
+          'plus_code',
           (v) =>
               v == null ? null : PlusCode.fromJson(v as Map<String, dynamic>)),
-      priceLevel: $checkedConvert(json, 'priceLevel', (v) => v as int),
+      priceLevel: $checkedConvert(json, 'price_level', (v) => v as int),
       rating: $checkedConvert(json, 'rating', (v) => (v as num)?.toDouble()),
       reference: $checkedConvert(json, 'reference', (v) => v as String),
       types: $checkedConvert(
@@ -47,32 +47,40 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
               ?.map((e) => _$enumDecodeNullable(_$PlaceTypeEnumMap, e))
               ?.toList()),
       userRatingsTotal:
-          $checkedConvert(json, 'userRatingsTotal', (v) => v as int),
+          $checkedConvert(json, 'user_ratings_total', (v) => v as int),
       vicinity: $checkedConvert(json, 'vicinity', (v) => v as String),
       permanentlyClosed:
-          $checkedConvert(json, 'permanentlyClosed', (v) => v as bool),
+          $checkedConvert(json, 'permanently_closed', (v) => v as bool),
     );
     return val;
+  }, fieldKeyMap: const {
+    'businessStatus': 'business_status',
+    'openingHours': 'opening_hours',
+    'placeId': 'place_id',
+    'plusCode': 'plus_code',
+    'priceLevel': 'price_level',
+    'userRatingsTotal': 'user_ratings_total',
+    'permanentlyClosed': 'permanently_closed'
   });
 }
 
 Map<String, dynamic> _$NearbySearchResultToJson(NearbySearchResult instance) =>
     <String, dynamic>{
-      'businessStatus': _$BusinessStatusEnumMap[instance.businessStatus],
+      'business_status': _$BusinessStatusEnumMap[instance.businessStatus],
       'geometry': instance.geometry?.toJson(),
       'icon': instance.icon,
       'name': instance.name,
-      'openingHours': instance.openingHours?.toJson(),
+      'opening_hours': instance.openingHours?.toJson(),
       'photos': instance.photos?.map((e) => e?.toJson())?.toList(),
-      'placeId': instance.placeId,
-      'plusCode': instance.plusCode?.toJson(),
-      'priceLevel': instance.priceLevel,
+      'place_id': instance.placeId,
+      'plus_code': instance.plusCode?.toJson(),
+      'price_level': instance.priceLevel,
       'rating': instance.rating,
       'reference': instance.reference,
       'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e])?.toList(),
-      'userRatingsTotal': instance.userRatingsTotal,
+      'user_ratings_total': instance.userRatingsTotal,
       'vicinity': instance.vicinity,
-      'permanentlyClosed': instance.permanentlyClosed,
+      'permanently_closed': instance.permanentlyClosed,
     };
 
 T _$enumDecode<T>(

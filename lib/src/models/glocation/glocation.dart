@@ -7,6 +7,7 @@ part 'glocation.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class GLocation extends Equatable {
   GLocation({

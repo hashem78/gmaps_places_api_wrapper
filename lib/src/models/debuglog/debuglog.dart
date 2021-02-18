@@ -7,6 +7,7 @@ part 'debuglog.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class DebugLog extends Equatable {
   DebugLog({

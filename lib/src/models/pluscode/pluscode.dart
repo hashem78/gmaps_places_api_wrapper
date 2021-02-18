@@ -7,6 +7,7 @@ part 'pluscode.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class PlusCode extends Equatable {
   PlusCode({

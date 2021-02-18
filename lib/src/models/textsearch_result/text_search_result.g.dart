@@ -9,10 +9,10 @@ part of 'text_search_result.dart';
 TextSearchResult _$TextSearchResultFromJson(Map<String, dynamic> json) {
   return $checkedNew('TextSearchResult', json, () {
     final val = TextSearchResult(
-      businessStatus: $checkedConvert(json, 'businessStatus',
+      businessStatus: $checkedConvert(json, 'business_status',
           (v) => _$enumDecodeNullable(_$BusinessStatusEnumMap, v)),
       formattedAddress:
-          $checkedConvert(json, 'formattedAddress', (v) => v as String),
+          $checkedConvert(json, 'formatted_address', (v) => v as String),
       geometry: $checkedConvert(
           json,
           'geometry',
@@ -22,7 +22,7 @@ TextSearchResult _$TextSearchResultFromJson(Map<String, dynamic> json) {
       name: $checkedConvert(json, 'name', (v) => v as String),
       openingHours: $checkedConvert(
           json,
-          'openingHours',
+          'opening_hours',
           (v) => v == null
               ? null
               : OpeningHours.fromJson(v as Map<String, dynamic>)),
@@ -33,13 +33,13 @@ TextSearchResult _$TextSearchResultFromJson(Map<String, dynamic> json) {
               ?.map((e) =>
                   e == null ? null : Photo.fromJson(e as Map<String, dynamic>))
               ?.toList()),
-      placeId: $checkedConvert(json, 'placeId', (v) => v as String),
+      placeId: $checkedConvert(json, 'place_id', (v) => v as String),
       plusCode: $checkedConvert(
           json,
-          'plusCode',
+          'plus_code',
           (v) =>
               v == null ? null : PlusCode.fromJson(v as Map<String, dynamic>)),
-      priceLevel: $checkedConvert(json, 'priceLevel', (v) => v as int),
+      priceLevel: $checkedConvert(json, 'price_level', (v) => v as int),
       rating: $checkedConvert(json, 'rating', (v) => (v as num)?.toDouble()),
       reference: $checkedConvert(json, 'reference', (v) => v as String),
       types: $checkedConvert(
@@ -49,28 +49,36 @@ TextSearchResult _$TextSearchResultFromJson(Map<String, dynamic> json) {
               ?.map((e) => _$enumDecodeNullable(_$PlaceTypeEnumMap, e))
               ?.toList()),
       userRatingsTotal:
-          $checkedConvert(json, 'userRatingsTotal', (v) => v as int),
+          $checkedConvert(json, 'user_ratings_total', (v) => v as int),
     );
     return val;
+  }, fieldKeyMap: const {
+    'businessStatus': 'business_status',
+    'formattedAddress': 'formatted_address',
+    'openingHours': 'opening_hours',
+    'placeId': 'place_id',
+    'plusCode': 'plus_code',
+    'priceLevel': 'price_level',
+    'userRatingsTotal': 'user_ratings_total'
   });
 }
 
 Map<String, dynamic> _$TextSearchResultToJson(TextSearchResult instance) =>
     <String, dynamic>{
-      'businessStatus': _$BusinessStatusEnumMap[instance.businessStatus],
-      'formattedAddress': instance.formattedAddress,
+      'business_status': _$BusinessStatusEnumMap[instance.businessStatus],
+      'formatted_address': instance.formattedAddress,
       'geometry': instance.geometry?.toJson(),
       'icon': instance.icon,
       'name': instance.name,
-      'openingHours': instance.openingHours?.toJson(),
+      'opening_hours': instance.openingHours?.toJson(),
       'photos': instance.photos?.map((e) => e?.toJson())?.toList(),
-      'placeId': instance.placeId,
-      'plusCode': instance.plusCode?.toJson(),
-      'priceLevel': instance.priceLevel,
+      'place_id': instance.placeId,
+      'plus_code': instance.plusCode?.toJson(),
+      'price_level': instance.priceLevel,
       'rating': instance.rating,
       'reference': instance.reference,
       'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e])?.toList(),
-      'userRatingsTotal': instance.userRatingsTotal,
+      'user_ratings_total': instance.userRatingsTotal,
     };
 
 T _$enumDecode<T>(

@@ -10,6 +10,7 @@ part 'candidate.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class Candidate extends Equatable {
   Candidate({

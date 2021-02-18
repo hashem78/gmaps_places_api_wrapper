@@ -14,6 +14,7 @@ part 'text_search_result.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class TextSearchResult extends Equatable {
   TextSearchResult({

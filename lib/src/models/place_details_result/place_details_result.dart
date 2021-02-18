@@ -1,15 +1,14 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:places_api_wrapper/src/enums/bussiness_status.dart';
-import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
-
+import 'package:places_api_wrapper/src/models/address_component/address_component.dart';
 import 'package:places_api_wrapper/src/models/geometry/geometry.dart';
 import 'package:places_api_wrapper/src/models/opening_hours/openinghours.dart';
 import 'package:places_api_wrapper/src/models/photo/photos.dart';
 import 'package:places_api_wrapper/src/models/pluscode/pluscode.dart';
+import 'package:places_api_wrapper/src/models/review/review.dart';
 
-part 'nearby_search_result.g.dart';
+part 'place_details_result.g.dart';
 
 @JsonSerializable(
   checked: true,
@@ -17,63 +16,81 @@ part 'nearby_search_result.g.dart';
   explicitToJson: true,
   fieldRename: FieldRename.snake,
 )
-class NearbySearchResult extends Equatable {
-  NearbySearchResult({
+class PlaceDetailsResult extends Equatable {
+  PlaceDetailsResult({
+    this.addressComponents,
+    this.adrAddress,
     this.businessStatus,
+    this.formattedAddress,
+    this.formattedPhoneNumber,
     this.geometry,
     this.icon,
+    this.internationalPhoneNumber,
     this.name,
     this.openingHours,
     this.photos,
     this.placeId,
     this.plusCode,
-    this.priceLevel,
     this.rating,
-    this.reference,
+    this.reviews,
     this.types,
+    this.url,
     this.userRatingsTotal,
+    this.utcOffset,
     this.vicinity,
-    this.permanentlyClosed,
+    this.website,
   });
 
-  final BusinessStatus businessStatus;
+  final List<AddressComponent> addressComponents;
+  final String adrAddress;
+  final String businessStatus;
+  final String formattedAddress;
+  final String formattedPhoneNumber;
   final Geometry geometry;
   final String icon;
+  final String internationalPhoneNumber;
   final String name;
   final OpeningHours openingHours;
   final List<Photo> photos;
   final String placeId;
   final PlusCode plusCode;
-  final int priceLevel;
   final double rating;
-  final String reference;
-  final List<PlaceType> types;
+  final List<Review> reviews;
+  final List<String> types;
+  final String url;
   final int userRatingsTotal;
+  final int utcOffset;
   final String vicinity;
-  final bool permanentlyClosed;
+  final String website;
 
-  factory NearbySearchResult.fromJson(Map<String, dynamic> json) =>
-      _$NearbySearchResultFromJson(json);
-  Map<String, dynamic> toJson() => _$NearbySearchResultToJson(this);
+  factory PlaceDetailsResult.fromJson(Map<String, dynamic> json) =>
+      _$PlaceDetailsResultFromJson(json);
+  Map<String, dynamic> toJson() => _$PlaceDetailsResultToJson(this);
 
   @override
   List<Object> get props {
     return [
+      addressComponents,
+      adrAddress,
       businessStatus,
+      formattedAddress,
+      formattedPhoneNumber,
       geometry,
       icon,
+      internationalPhoneNumber,
       name,
       openingHours,
       photos,
       placeId,
       plusCode,
-      priceLevel,
       rating,
-      reference,
+      reviews,
       types,
+      url,
       userRatingsTotal,
+      utcOffset,
       vicinity,
-      permanentlyClosed,
+      website,
     ];
   }
 

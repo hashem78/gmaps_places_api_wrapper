@@ -10,7 +10,7 @@ Candidate _$CandidateFromJson(Map<String, dynamic> json) {
   return $checkedNew('Candidate', json, () {
     final val = Candidate(
       formattedAddress:
-          $checkedConvert(json, 'formattedAddress', (v) => v as String),
+          $checkedConvert(json, 'formatted_address', (v) => v as String),
       geometry: $checkedConvert(
           json,
           'geometry',
@@ -19,7 +19,7 @@ Candidate _$CandidateFromJson(Map<String, dynamic> json) {
       name: $checkedConvert(json, 'name', (v) => v as String),
       openingHours: $checkedConvert(
           json,
-          'openingHours',
+          'opening_hours',
           (v) => v == null
               ? null
               : OpeningHours.fromJson(v as Map<String, dynamic>)),
@@ -33,14 +33,17 @@ Candidate _$CandidateFromJson(Map<String, dynamic> json) {
       rating: $checkedConvert(json, 'rating', (v) => (v as num)?.toDouble()),
     );
     return val;
+  }, fieldKeyMap: const {
+    'formattedAddress': 'formatted_address',
+    'openingHours': 'opening_hours'
   });
 }
 
 Map<String, dynamic> _$CandidateToJson(Candidate instance) => <String, dynamic>{
-      'formattedAddress': instance.formattedAddress,
+      'formatted_address': instance.formattedAddress,
       'geometry': instance.geometry?.toJson(),
       'name': instance.name,
-      'openingHours': instance.openingHours?.toJson(),
+      'opening_hours': instance.openingHours?.toJson(),
       'photos': instance.photos?.map((e) => e?.toJson())?.toList(),
       'rating': instance.rating,
     };

@@ -2,10 +2,12 @@ import 'dart:convert';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:http/http.dart' as http;
 import 'package:places_api_wrapper/src/enums/languages.dart';
+import 'package:places_api_wrapper/src/enums/place_details_fields.dart';
 import 'package:places_api_wrapper/src/enums/place_types_enum.dart';
 import 'package:places_api_wrapper/src/enums/ranking_method.dart';
 import 'package:places_api_wrapper/src/models/glocation/glocation.dart';
 import 'package:places_api_wrapper/src/models/nearby_response/nearby_search_response.dart';
+import 'package:places_api_wrapper/src/models/place_details_response/place_details_response.dart';
 import 'package:places_api_wrapper/src/models/textsearch_response/text_search_response.dart';
 
 import 'models/place_response/place_response.dart';
@@ -16,6 +18,8 @@ class GPlaces {
       'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
   static const String _nearbysearchEndPoint =
       'https://maps.googleapis.com/maps/api/place/nearbysearch/json?';
+  static const String _placedetailsEndPoint =
+      'https://maps.googleapis.com/maps/api/place/details/json?';
 
   static Future<FindPlaceResponse> findPlaceFromText(
     String input,
@@ -139,5 +143,38 @@ class GPlaces {
     return TextSearchResponse.fromJson(
       jsonDecode(respone.body),
     );
+  }
+
+  static Future<PlaceDetailsResponse> placedetails(
+    String placeId, {
+    Language language,
+    String region,
+    String sessionToken,
+    List<PlaceDetailsFields> fields,
+  }) async {
+    assert(
+      placeId != null,
+      'PlaceId must not be null',
+    );
+    final fixedPlaceId = 'place_id=$placeId';
+    final fixedLanguage = (language == null ? false : true)
+        ? '&language=${EnumToString.convertToString(language)}'
+        : '';
+    final fixedRegion =
+        (region == null ? false : true) ? '&region=$region' : '';
+    final fixedsessionToken = (sessionToken == null ? false : true)
+        ? '&sessiontoken=$sessionToken'
+        : '';
+    final fixedFields = fields.fold<String>(
+      '&fields=',
+      (prev, next) {
+        return '$prev,${EnumToString.convertToString(next)}';
+      },
+    ).replaceFirst(',', '');
+    final fixedEndpoint =
+        '$_placedetailsEndPoint$fixedPlaceId$fixedLanguage$fixedRegion$fixedsessionToken$fixedFields&key=$key';
+    print(fixedEndpoint);
+    final response = await http.get(fixedEndpoint);
+    return PlaceDetailsResponse.fromJson(jsonDecode(response.body));
   }
 }

@@ -11,6 +11,7 @@ part 'place_response.g.dart';
   checked: true,
   createFactory: true,
   explicitToJson: true,
+  fieldRename: FieldRename.snake,
 )
 class FindPlaceResponse extends Equatable {
   FindPlaceResponse({
