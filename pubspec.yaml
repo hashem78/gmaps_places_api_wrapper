@@ -1,5 +1,5 @@
 name: gmaps_places_api_wrapper
-description: A simple wrapper the simplifies dealing with Google Maps' places API 
+description: A simple wrapper that simplifies dealing with Google Maps' places API for dart 
 version: 1.0.0
 
 environment:
