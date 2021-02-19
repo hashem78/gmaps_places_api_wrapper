@@ -28,21 +28,21 @@ class Prediction extends Equatable {
     this.structuredFormatting,
   });
 
-  final String description;
-  final int distanceMeters;
-  final String id;
-  final List<MatchedSubstring> matchedSubstrings;
-  final String placeId;
-  final String reference;
-  final List<Term> terms;
-  final List<PlaceType> types;
-  final StructuredFormatting structuredFormatting;
+  final String? description;
+  final int? distanceMeters;
+  final String? id;
+  final List<MatchedSubstring>? matchedSubstrings;
+  final String? placeId;
+  final String? reference;
+  final List<Term>? terms;
+  final List<PlaceType>? types;
+  final StructuredFormatting? structuredFormatting;
 
   factory Prediction.fromJson(Map<String, dynamic> json) =>
       _$PredictionFromJson(json);
   Map<String, dynamic> toJson() => _$PredictionToJson(this);
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       description,
       distanceMeters,

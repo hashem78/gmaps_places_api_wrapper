@@ -18,15 +18,15 @@ class OpeningHours extends Equatable {
     this.periods,
   });
 
-  final bool openNow;
-  final List<dynamic> weekdayText;
-  final List<GPeriod> periods;
+  final bool? openNow;
+  final List<dynamic>? weekdayText;
+  final List<GPeriod>? periods;
 
   factory OpeningHours.fromJson(Map<String, dynamic> json) =>
       _$OpeningHoursFromJson(json);
   Map<String, dynamic> toJson() => _$OpeningHoursToJson(this);
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         openNow,
         weekdayText,
       ];
@@ -34,9 +34,9 @@ class OpeningHours extends Equatable {
   bool get stringify => true;
 
   OpeningHours copyWith({
-    bool openNow,
-    List<dynamic> weekdayText,
-    List<GPeriod> periods,
+    bool? openNow,
+    List<dynamic>? weekdayText,
+    List<GPeriod>? periods,
   }) {
     return OpeningHours(
       openNow: openNow ?? this.openNow,

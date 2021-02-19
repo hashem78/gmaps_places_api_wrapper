@@ -9,7 +9,7 @@ part of 'debuglog.dart';
 DebugLog _$DebugLogFromJson(Map<String, dynamic> json) {
   return $checkedNew('DebugLog', json, () {
     final val = DebugLog(
-      line: $checkedConvert(json, 'line', (v) => v as List),
+      line: $checkedConvert(json, 'line', (v) => v as List<dynamic>?),
     );
     return val;
   });

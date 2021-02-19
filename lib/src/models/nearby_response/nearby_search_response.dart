@@ -20,17 +20,17 @@ class NearbySearchResponse extends Equatable {
     this.status,
   });
 
-  final List<dynamic> htmlAttributions;
-  final String nextPageToken;
-  final List<NearbySearchResult> results;
-  final ResponseStatus status;
+  final List<dynamic>? htmlAttributions;
+  final String? nextPageToken;
+  final List<NearbySearchResult>? results;
+  final ResponseStatus? status;
 
   factory NearbySearchResponse.fromJson(Map<String, dynamic> json) =>
       _$NearbySearchResponseFromJson(json);
   Map<String, dynamic> toJson() => _$NearbySearchResponseToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         htmlAttributions,
         nextPageToken,
         results,

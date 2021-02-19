@@ -9,8 +9,8 @@ part of 'glocation.dart';
 GLocation _$GLocationFromJson(Map<String, dynamic> json) {
   return $checkedNew('GLocation', json, () {
     final val = GLocation(
-      lat: $checkedConvert(json, 'lat', (v) => (v as num)?.toDouble()),
-      lng: $checkedConvert(json, 'lng', (v) => (v as num)?.toDouble()),
+      lat: $checkedConvert(json, 'lat', (v) => (v as num?)?.toDouble()),
+      lng: $checkedConvert(json, 'lng', (v) => (v as num?)?.toDouble()),
     );
     return val;
   });

@@ -16,8 +16,8 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
           'geometry',
           (v) =>
               v == null ? null : Geometry.fromJson(v as Map<String, dynamic>)),
-      icon: $checkedConvert(json, 'icon', (v) => v as String),
-      name: $checkedConvert(json, 'name', (v) => v as String),
+      icon: $checkedConvert(json, 'icon', (v) => v as String?),
+      name: $checkedConvert(json, 'name', (v) => v as String?),
       openingHours: $checkedConvert(
           json,
           'opening_hours',
@@ -27,30 +27,29 @@ NearbySearchResult _$NearbySearchResultFromJson(Map<String, dynamic> json) {
       photos: $checkedConvert(
           json,
           'photos',
-          (v) => (v as List)
-              ?.map((e) =>
-                  e == null ? null : Photo.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
-      placeId: $checkedConvert(json, 'place_id', (v) => v as String),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => Photo.fromJson(e as Map<String, dynamic>))
+              .toList()),
+      placeId: $checkedConvert(json, 'place_id', (v) => v as String?),
       plusCode: $checkedConvert(
           json,
           'plus_code',
           (v) =>
               v == null ? null : PlusCode.fromJson(v as Map<String, dynamic>)),
-      priceLevel: $checkedConvert(json, 'price_level', (v) => v as int),
-      rating: $checkedConvert(json, 'rating', (v) => (v as num)?.toDouble()),
-      reference: $checkedConvert(json, 'reference', (v) => v as String),
+      priceLevel: $checkedConvert(json, 'price_level', (v) => v as int?),
+      rating: $checkedConvert(json, 'rating', (v) => (v as num?)?.toDouble()),
+      reference: $checkedConvert(json, 'reference', (v) => v as String?),
       types: $checkedConvert(
           json,
           'types',
-          (v) => (v as List)
-              ?.map((e) => _$enumDecodeNullable(_$PlaceTypeEnumMap, e))
-              ?.toList()),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => _$enumDecode(_$PlaceTypeEnumMap, e))
+              .toList()),
       userRatingsTotal:
-          $checkedConvert(json, 'user_ratings_total', (v) => v as int),
-      vicinity: $checkedConvert(json, 'vicinity', (v) => v as String),
+          $checkedConvert(json, 'user_ratings_total', (v) => v as int?),
+      vicinity: $checkedConvert(json, 'vicinity', (v) => v as String?),
       permanentlyClosed:
-          $checkedConvert(json, 'permanently_closed', (v) => v as bool),
+          $checkedConvert(json, 'permanently_closed', (v) => v as bool?),
     );
     return val;
   }, fieldKeyMap: const {
@@ -71,48 +70,53 @@ Map<String, dynamic> _$NearbySearchResultToJson(NearbySearchResult instance) =>
       'icon': instance.icon,
       'name': instance.name,
       'opening_hours': instance.openingHours?.toJson(),
-      'photos': instance.photos?.map((e) => e?.toJson())?.toList(),
+      'photos': instance.photos?.map((e) => e.toJson()).toList(),
       'place_id': instance.placeId,
       'plus_code': instance.plusCode?.toJson(),
       'price_level': instance.priceLevel,
       'rating': instance.rating,
       'reference': instance.reference,
-      'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e])?.toList(),
+      'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e]).toList(),
       'user_ratings_total': instance.userRatingsTotal,
       'vicinity': instance.vicinity,
       'permanently_closed': instance.permanentlyClosed,
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$BusinessStatusEnumMap = {

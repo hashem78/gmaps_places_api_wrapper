@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:enum_to_string/enum_to_string.dart';
+
 import 'package:gmaps_places_api_wrapper/src/enums/place_types.dart';
 import 'package:http/http.dart' as http;
 import 'package:gmaps_places_api_wrapper/src/enums/languages.dart';
@@ -17,7 +17,7 @@ import 'models/autocomplete/autocomplete_response.dart';
 import 'models/place_response/place_response.dart';
 
 class GPlaces {
-  static String key;
+  static String? key;
   static const String _findPlaceFromTextEndPoint =
       'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?';
   static const String _nearbysearchEndPoint =
@@ -26,12 +26,14 @@ class GPlaces {
       'https://maps.googleapis.com/maps/api/place/details/json?';
   static const String _autocompleteEndPoint =
       'https://maps.googleapis.com/maps/api/place/autocomplete/json?';
+  static const String _textsearchEndPoint =
+      'https://maps.googleapis.com/maps/api/place/textsearch/json?';
 
   static Future<FindPlaceResponse> findPlaceFromText(
     String input,
     String inputtype, {
-    String language,
-    List<String> fields,
+    String? language,
+    List<String>? fields,
   }) async {
     final fixedFields = (fields == null ? false : true)
         ? fields.fold<String>('&fields=', (prev, next) {
@@ -43,7 +45,7 @@ class GPlaces {
     var fixedEndpoint =
         '${_findPlaceFromTextEndPoint}key=$key&input=$input&inputtype=$inputtype$fixedFields$fixedlanguage';
     try {
-      final response = await http.get(fixedEndpoint);
+      final response = await http.get(Uri.parse(fixedEndpoint));
       final body = response.body;
       return FindPlaceResponse.fromJson(jsonDecode(body));
     } catch (e) {
@@ -53,21 +55,17 @@ class GPlaces {
 
   static Future<NearbySearchResponse> nearbysearch(
     GLocation location, {
-    int radius,
-    String keyword,
-    Language language,
-    int minprice,
-    int maxprice,
-    String name,
-    bool opennow,
-    PlaceType type,
-    RankingMethod rankby,
-    String pageToken,
+    int? radius,
+    String? keyword,
+    Language? language,
+    int? minprice,
+    int? maxprice,
+    String? name,
+    bool? opennow,
+    PlaceType? type,
+    RankingMethod? rankby,
+    String? pageToken,
   }) async {
-    assert(
-      location != null,
-      "Location can't be null",
-    );
     assert(
       (radius == null && rankby != null) || (radius != null && rankby == null),
       'Radius and RankingMethod are mutually exclusive, if radius is null rankby has to be valid and vice versa',
@@ -78,7 +76,7 @@ class GPlaces {
     final fixedKeyword =
         (keyword == null ? false : true) ? '&keyword=$keyword' : '';
     final fixedLanguage = (language == null ? false : true)
-        ? '&language=${EnumToString.convertToString(language)}'
+        ? '&language=${convertToString(language)}'
         : '';
     final fixedMinPrice =
         (minprice == null ? false : true) ? '&minprice=$minprice' : '';
@@ -86,12 +84,10 @@ class GPlaces {
         (maxprice == null ? false : true) ? '&minprice=$maxprice' : '';
     final fixedName = (name == null ? false : true) ? '&name=$name' : '';
     final fixedOpennow = (opennow == null ? false : true) ? '&opennow' : '';
-    final fixedPlaceType = (type == null ? false : true)
-        ? '&type=${EnumToString.convertToString(type)}'
-        : '';
-    final fixedRankby = (rankby == null ? false : true)
-        ? EnumToString.convertToString(rankby)
-        : '';
+    final fixedPlaceType =
+        (type == null ? false : true) ? '&type=${convertToString(type)}' : '';
+    final fixedRankby =
+        (rankby == null ? false : true) ? convertToString(rankby) : '';
     final fixedPageToken =
         (pageToken == null ? false : true) ? '&pageToken=$pageToken' : '';
 
@@ -99,7 +95,7 @@ class GPlaces {
         '$_nearbysearchEndPoint$fixedLocation$fixedRadius$fixedKeyword$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedRankby$fixedPageToken&key=$key';
 
     try {
-      final response = await http.get(fixedEndpoint);
+      final response = await http.get(Uri.parse(fixedEndpoint));
       final body = response.body;
       return NearbySearchResponse.fromJson(jsonDecode(body));
     } catch (e) {
@@ -109,17 +105,17 @@ class GPlaces {
 
   static Future<TextSearchResponse> textsearch(
     String query, {
-    String region,
+    String? region,
     // ignore: always_require_non_null_named_parameters
-    GLocation location,
-    int radius,
-    Language language,
-    int minprice,
-    int maxprice,
-    String name,
-    bool opennow,
-    PlaceType type,
-    String pageToken,
+    GLocation? location,
+    int? radius,
+    Language? language,
+    int? minprice,
+    int? maxprice,
+    String? name,
+    bool? opennow,
+    PlaceType? type,
+    String? pageToken,
   }) async {
     assert(
       location != null,
@@ -133,7 +129,7 @@ class GPlaces {
         (radius == null ? false : true) ? '&radius=$radius' : '';
 
     final fixedLanguage = (language == null ? false : true)
-        ? '&language=${EnumToString.convertToString(language)}'
+        ? '&language=${convertToString(language)}'
         : '';
     final fixedMinPrice =
         (minprice == null ? false : true) ? '&minprice=$minprice' : '';
@@ -141,18 +137,17 @@ class GPlaces {
         (maxprice == null ? false : true) ? '&minprice=$maxprice' : '';
     final fixedName = (name == null ? false : true) ? '&name=$name' : '';
     final fixedOpennow = (opennow == null ? false : true) ? '&opennow' : '';
-    final fixedPlaceType = (type == null ? false : true)
-        ? '&type=${EnumToString.convertToString(type)}'
-        : '';
+    final fixedPlaceType =
+        (type == null ? false : true) ? '&type=${convertToString(type)}' : '';
 
     final fixedPageToken =
         (pageToken == null ? false : true) ? '&pageToken=$pageToken' : '';
 
     final fixedEndpoint =
-        '$_nearbysearchEndPoint$fixedQuery$fixedLocation$fixedRadius$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedPageToken&key=$key';
+        '$_textsearchEndPoint$fixedQuery$fixedLocation$fixedRadius$fixedLanguage$fixedMinPrice$fixedMaxPrice$fixedName$fixedOpennow$fixedPlaceType$fixedPageToken&key=$key';
 
     try {
-      final response = await http.get(fixedEndpoint);
+      final response = await http.get(Uri.parse(fixedEndpoint));
       final body = response.body;
       return TextSearchResponse.fromJson(jsonDecode(body));
     } catch (e) {
@@ -162,18 +157,14 @@ class GPlaces {
 
   static Future<PlaceDetailsResponse> placedetails(
     String placeId, {
-    Language language,
-    String region,
-    String sessionToken,
-    List<PlaceDetailsFields> fields,
+    Language? language,
+    String? region,
+    String? sessionToken,
+    required List<PlaceDetailsFields> fields,
   }) async {
-    assert(
-      placeId != null,
-      'PlaceId must not be null',
-    );
     final fixedPlaceId = 'place_id=$placeId';
     final fixedLanguage = (language == null ? false : true)
-        ? '&language=${EnumToString.convertToString(language)}'
+        ? '&language=${convertToString(language)}'
         : '';
     final fixedRegion =
         (region == null ? false : true) ? '&region=$region' : '';
@@ -183,14 +174,14 @@ class GPlaces {
     final fixedFields = fields.fold<String>(
       '&fields=',
       (prev, next) {
-        return '$prev,${EnumToString.convertToString(next)}';
+        return '$prev,${convertToString(next)}';
       },
     ).replaceFirst(',', '');
     final fixedEndpoint =
         '$_placedetailsEndPoint$fixedPlaceId$fixedLanguage$fixedRegion$fixedsessionToken$fixedFields&key=$key';
 
     try {
-      final response = await http.get(fixedEndpoint);
+      final response = await http.get(Uri.parse(fixedEndpoint));
       final body = response.body;
       return PlaceDetailsResponse.fromJson(jsonDecode(body));
     } catch (e) {
@@ -200,19 +191,15 @@ class GPlaces {
 
   static Future<AutocompleteResponse> autocomplete(
     String input, {
-    String sessiontoken,
-    int offset,
-    GLocation origin,
-    GLocation location,
-    int radius,
-    Language language,
-    List<PlaceType> types,
-    List<String> components,
+    String? sessiontoken,
+    int? offset,
+    GLocation? origin,
+    GLocation? location,
+    int? radius,
+    Language? language,
+    List<PlaceType>? types,
+    List<String>? components,
   }) async {
-    assert(
-      input != null,
-      'Input can not be null',
-    );
     if (components != null) {
       assert(components.length <= 5, 'components.length > 5');
     }
@@ -229,10 +216,10 @@ class GPlaces {
     final fixedRadius =
         (radius == null ? false : true) ? '&radius=$radius' : '';
     final fixedLanguage = (language == null ? false : true)
-        ? '&language=${EnumToString.convertToString(language)}'
+        ? '&language=${convertToString(language)}'
         : '';
     final fixedTypes = (language == null ? false : true)
-        ? types.fold<String>(
+        ? types!.fold<String>(
             '&types=',
             (prev, next) {
               return '$prev,$next';
@@ -242,7 +229,7 @@ class GPlaces {
     final fixedComponents = (components == null ? false : true)
         ? components.fold(
             '&components=',
-            (prev, next) {
+            (dynamic prev, next) {
               return '$prev|country:$next';
             },
           ).replaceFirst('|', '')
@@ -251,11 +238,28 @@ class GPlaces {
         '$_autocompleteEndPoint$fixedInput$fixedSessionToken$fixedOffset$fixedOrigin$fixedLocation$fixedRadius$fixedLanguage$fixedTypes$fixedComponents&key=$key';
 
     try {
-      final response = await http.get(fixedEndpoint);
+      final response = await http.get(Uri.parse(fixedEndpoint));
       final body = response.body;
       return AutocompleteResponse.fromJson(jsonDecode(body));
     } catch (e) {
       return const AutocompleteResponse(status: ResponseStatus.UNKNOWN_ERROR);
     }
+  }
+
+  static bool _isEnumItem(enumItem) {
+    final split_enum = enumItem.toString().split('.');
+    return split_enum.length > 1 &&
+        split_enum[0] == enumItem.runtimeType.toString();
+  }
+
+  static String? convertToString(enumItem, {bool camelCase = false}) {
+    if (enumItem == null) return null;
+
+    assert(
+      _isEnumItem(enumItem),
+      '$enumItem of type ${enumItem.runtimeType.toString()} is not an enum item',
+    );
+
+    return enumItem.toString().split('.')[1];
   }
 }

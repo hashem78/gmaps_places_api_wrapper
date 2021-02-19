@@ -18,14 +18,14 @@ class AutocompleteResponse extends Equatable {
     this.predictions,
   });
 
-  final ResponseStatus status;
-  final List<Prediction> predictions;
+  final ResponseStatus? status;
+  final List<Prediction>? predictions;
   factory AutocompleteResponse.fromJson(Map<String, dynamic> json) =>
       _$AutocompleteResponseFromJson(json);
   Map<String, dynamic> toJson() => _$AutocompleteResponseToJson(this);
 
   @override
-  List<Object> get props => [status, predictions];
+  List<Object?> get props => [status, predictions];
 
   @override
   bool get stringify => true;

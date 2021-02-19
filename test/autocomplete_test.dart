@@ -11,7 +11,7 @@ void main() {
     },
   );
   test(
-    'should check if find autcomplete response is OK',
+    'should check if find autocomplete response is OK',
     () async {
       // arrange
 
@@ -21,6 +21,7 @@ void main() {
         location: GLocation(lat: 37.76999, lng: -122.44696),
         radius: 500,
       );
+      print(response);
       // assert
       expect(response.status, equals(ResponseStatus.OK));
     },

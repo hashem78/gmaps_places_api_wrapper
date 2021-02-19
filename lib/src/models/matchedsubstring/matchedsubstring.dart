@@ -15,15 +15,15 @@ class MatchedSubstring extends Equatable {
     this.offset,
   });
 
-  final int length;
-  final int offset;
+  final int? length;
+  final int? offset;
 
   factory MatchedSubstring.fromJson(Map<String, dynamic> json) =>
       _$MatchedSubstringFromJson(json);
   Map<String, dynamic> toJson() => _$MatchedSubstringToJson(this);
 
   @override
-  List<Object> get props => [length, offset];
+  List<Object?> get props => [length, offset];
 
   @override
   bool get stringify => true;

@@ -20,17 +20,17 @@ class TextSearchResponse extends Equatable {
     this.status,
   });
 
-  final List<dynamic> htmlAttributions;
-  final String nextPageToken;
-  final List<TextSearchResult> results;
-  final ResponseStatus status;
+  final List<dynamic>? htmlAttributions;
+  final String? nextPageToken;
+  final List<TextSearchResult>? results;
+  final ResponseStatus? status;
 
   factory TextSearchResponse.fromJson(Map<String, dynamic> json) =>
       _$TextSearchResponseFromJson(json);
   Map<String, dynamic> toJson() => _$TextSearchResponseToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         htmlAttributions,
         nextPageToken,
         results,

@@ -9,18 +9,16 @@ part of 'text_search_response.dart';
 TextSearchResponse _$TextSearchResponseFromJson(Map<String, dynamic> json) {
   return $checkedNew('TextSearchResponse', json, () {
     final val = TextSearchResponse(
-      htmlAttributions:
-          $checkedConvert(json, 'html_attributions', (v) => v as List),
+      htmlAttributions: $checkedConvert(
+          json, 'html_attributions', (v) => v as List<dynamic>?),
       nextPageToken:
-          $checkedConvert(json, 'next_page_token', (v) => v as String),
+          $checkedConvert(json, 'next_page_token', (v) => v as String?),
       results: $checkedConvert(
           json,
           'results',
-          (v) => (v as List)
-              ?.map((e) => e == null
-                  ? null
-                  : TextSearchResult.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => TextSearchResult.fromJson(e as Map<String, dynamic>))
+              .toList()),
       status: $checkedConvert(json, 'status',
           (v) => _$enumDecodeNullable(_$ResponseStatusEnumMap, v)),
     );
@@ -35,40 +33,45 @@ Map<String, dynamic> _$TextSearchResponseToJson(TextSearchResponse instance) =>
     <String, dynamic>{
       'html_attributions': instance.htmlAttributions,
       'next_page_token': instance.nextPageToken,
-      'results': instance.results?.map((e) => e?.toJson())?.toList(),
+      'results': instance.results?.map((e) => e.toJson()).toList(),
       'status': _$ResponseStatusEnumMap[instance.status],
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
+K? _$enumDecodeNullable<K, V>(
+  Map<K, V> enumValues,
   dynamic source, {
-  T unknownValue,
+  K? unknownValue,
 }) {
   if (source == null) {
     return null;
   }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return _$enumDecode<K, V>(enumValues, source, unknownValue: unknownValue);
 }
 
 const _$ResponseStatusEnumMap = {

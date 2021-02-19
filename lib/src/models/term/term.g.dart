@@ -9,9 +9,9 @@ part of 'term.dart';
 Term _$TermFromJson(Map<String, dynamic> json) {
   return $checkedNew('Term', json, () {
     final val = Term(
-      length: $checkedConvert(json, 'length', (v) => v as int),
-      value: $checkedConvert(json, 'value', (v) => v as String),
-      offset: $checkedConvert(json, 'offset', (v) => v as int),
+      length: $checkedConvert(json, 'length', (v) => v as int?),
+      value: $checkedConvert(json, 'value', (v) => v as String?),
+      offset: $checkedConvert(json, 'offset', (v) => v as int?),
     );
     return val;
   });

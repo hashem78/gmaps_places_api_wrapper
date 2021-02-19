@@ -17,16 +17,16 @@ class Photo extends Equatable {
     this.width,
   });
 
-  final int height;
-  final List<String> htmlAttributions;
-  final String photoReference;
-  final int width;
+  final int? height;
+  final List<String>? htmlAttributions;
+  final String? photoReference;
+  final int? width;
 
   Photo copyWith({
-    int height,
-    List<String> htmlAttributions,
-    String photoReference,
-    int width,
+    int? height,
+    List<String>? htmlAttributions,
+    String? photoReference,
+    int? width,
   }) =>
       Photo(
         height: height ?? this.height,
@@ -37,7 +37,7 @@ class Photo extends Equatable {
   factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
   Map<String, dynamic> toJson() => _$PhotoToJson(this);
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         height,
         htmlAttributions,
         photoReference,

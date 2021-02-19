@@ -21,19 +21,19 @@ class Review extends Equatable {
     this.time,
   });
 
-  final String authorName;
-  final String authorUrl;
-  final String language;
-  final String profilePhotoUrl;
-  final int rating;
-  final String relativeTimeDescription;
-  final String text;
-  final int time;
+  final String? authorName;
+  final String? authorUrl;
+  final String? language;
+  final String? profilePhotoUrl;
+  final int? rating;
+  final String? relativeTimeDescription;
+  final String? text;
+  final int? time;
   factory Review.fromJson(Map<String, dynamic> json) => _$ReviewFromJson(json);
   Map<String, dynamic> toJson() => _$ReviewToJson(this);
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       authorName,
       authorUrl,

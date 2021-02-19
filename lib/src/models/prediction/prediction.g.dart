@@ -9,32 +9,30 @@ part of 'prediction.dart';
 Prediction _$PredictionFromJson(Map<String, dynamic> json) {
   return $checkedNew('Prediction', json, () {
     final val = Prediction(
-      description: $checkedConvert(json, 'description', (v) => v as String),
-      distanceMeters: $checkedConvert(json, 'distance_meters', (v) => v as int),
-      id: $checkedConvert(json, 'id', (v) => v as String),
+      description: $checkedConvert(json, 'description', (v) => v as String?),
+      distanceMeters:
+          $checkedConvert(json, 'distance_meters', (v) => v as int?),
+      id: $checkedConvert(json, 'id', (v) => v as String?),
       matchedSubstrings: $checkedConvert(
           json,
           'matched_substrings',
-          (v) => (v as List)
-              ?.map((e) => e == null
-                  ? null
-                  : MatchedSubstring.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
-      placeId: $checkedConvert(json, 'place_id', (v) => v as String),
-      reference: $checkedConvert(json, 'reference', (v) => v as String),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => MatchedSubstring.fromJson(e as Map<String, dynamic>))
+              .toList()),
+      placeId: $checkedConvert(json, 'place_id', (v) => v as String?),
+      reference: $checkedConvert(json, 'reference', (v) => v as String?),
       terms: $checkedConvert(
           json,
           'terms',
-          (v) => (v as List)
-              ?.map((e) =>
-                  e == null ? null : Term.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => Term.fromJson(e as Map<String, dynamic>))
+              .toList()),
       types: $checkedConvert(
           json,
           'types',
-          (v) => (v as List)
-              ?.map((e) => _$enumDecodeNullable(_$PlaceTypeEnumMap, e))
-              ?.toList()),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => _$enumDecode(_$PlaceTypeEnumMap, e))
+              .toList()),
       structuredFormatting: $checkedConvert(
           json,
           'structured_formatting',
@@ -57,44 +55,38 @@ Map<String, dynamic> _$PredictionToJson(Prediction instance) =>
       'distance_meters': instance.distanceMeters,
       'id': instance.id,
       'matched_substrings':
-          instance.matchedSubstrings?.map((e) => e?.toJson())?.toList(),
+          instance.matchedSubstrings?.map((e) => e.toJson()).toList(),
       'place_id': instance.placeId,
       'reference': instance.reference,
-      'terms': instance.terms?.map((e) => e?.toJson())?.toList(),
-      'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e])?.toList(),
+      'terms': instance.terms?.map((e) => e.toJson()).toList(),
+      'types': instance.types?.map((e) => _$PlaceTypeEnumMap[e]).toList(),
       'structured_formatting': instance.structuredFormatting?.toJson(),
     };
 
-T _$enumDecode<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
+K _$enumDecode<K, V>(
+  Map<K, V> enumValues,
+  Object? source, {
+  K? unknownValue,
 }) {
   if (source == null) {
-    throw ArgumentError('A value must be provided. Supported values: '
-        '${enumValues.values.join(', ')}');
+    throw ArgumentError(
+      'A value must be provided. Supported values: '
+      '${enumValues.values.join(', ')}',
+    );
   }
 
-  final value = enumValues.entries
-      .singleWhere((e) => e.value == source, orElse: () => null)
-      ?.key;
-
-  if (value == null && unknownValue == null) {
-    throw ArgumentError('`$source` is not one of the supported values: '
-        '${enumValues.values.join(', ')}');
-  }
-  return value ?? unknownValue;
-}
-
-T _$enumDecodeNullable<T>(
-  Map<T, dynamic> enumValues,
-  dynamic source, {
-  T unknownValue,
-}) {
-  if (source == null) {
-    return null;
-  }
-  return _$enumDecode<T>(enumValues, source, unknownValue: unknownValue);
+  return enumValues.entries.singleWhere(
+    (e) => e.value == source,
+    orElse: () {
+      if (unknownValue == null) {
+        throw ArgumentError(
+          '`$source` is not one of the supported values: '
+          '${enumValues.values.join(', ')}',
+        );
+      }
+      return MapEntry(unknownValue, enumValues.values.first);
+    },
+  ).key;
 }
 
 const _$PlaceTypeEnumMap = {

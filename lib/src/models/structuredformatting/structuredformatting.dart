@@ -17,16 +17,16 @@ class StructuredFormatting extends Equatable {
     this.secondaryText,
   });
 
-  final String mainText;
-  final List<MatchedSubstring> mainTextMatchedSubstrings;
-  final String secondaryText;
+  final String? mainText;
+  final List<MatchedSubstring>? mainTextMatchedSubstrings;
+  final String? secondaryText;
 
   factory StructuredFormatting.fromJson(Map<String, dynamic> json) =>
       _$StructuredFormattingFromJson(json);
   Map<String, dynamic> toJson() => _$StructuredFormattingToJson(this);
 
   @override
-  List<Object> get props =>
+  List<Object?> get props =>
       [mainText, mainTextMatchedSubstrings, secondaryText];
 
   @override

@@ -20,14 +20,14 @@ class FindPlaceResponse extends Equatable {
     this.status,
   });
 
-  final List<Candidate> candidates;
-  final DebugLog debugLog;
-  final ResponseStatus status;
+  final List<Candidate>? candidates;
+  final DebugLog? debugLog;
+  final ResponseStatus? status;
 
   FindPlaceResponse copyWith({
-    List<Candidate> candidates,
-    DebugLog debugLog,
-    ResponseStatus status,
+    List<Candidate>? candidates,
+    DebugLog? debugLog,
+    ResponseStatus? status,
   }) =>
       FindPlaceResponse(
         candidates: candidates ?? this.candidates,
@@ -38,7 +38,7 @@ class FindPlaceResponse extends Equatable {
       _$FindPlaceResponseFromJson(json);
   Map<String, dynamic> toJson() => _$FindPlaceResponseToJson(this);
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         candidates,
         debugLog,
         status,

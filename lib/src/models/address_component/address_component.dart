@@ -16,15 +16,15 @@ class AddressComponent extends Equatable {
     this.types,
   });
 
-  final String longName;
-  final String shortName;
-  final List<String> types;
+  final String? longName;
+  final String? shortName;
+  final List<String>? types;
 
   factory AddressComponent.fromJson(Map<String, dynamic> json) =>
       _$AddressComponentFromJson(json);
   Map<String, dynamic> toJson() => _$AddressComponentToJson(this);
   @override
-  List<Object> get props => [longName, shortName, types];
+  List<Object?> get props => [longName, shortName, types];
 
   @override
   bool get stringify => true;

@@ -9,17 +9,15 @@ part of 'structuredformatting.dart';
 StructuredFormatting _$StructuredFormattingFromJson(Map<String, dynamic> json) {
   return $checkedNew('StructuredFormatting', json, () {
     final val = StructuredFormatting(
-      mainText: $checkedConvert(json, 'main_text', (v) => v as String),
+      mainText: $checkedConvert(json, 'main_text', (v) => v as String?),
       mainTextMatchedSubstrings: $checkedConvert(
           json,
           'main_text_matched_substrings',
-          (v) => (v as List)
-              ?.map((e) => e == null
-                  ? null
-                  : MatchedSubstring.fromJson(e as Map<String, dynamic>))
-              ?.toList()),
+          (v) => (v as List<dynamic>?)
+              ?.map((e) => MatchedSubstring.fromJson(e as Map<String, dynamic>))
+              .toList()),
       secondaryText:
-          $checkedConvert(json, 'secondary_text', (v) => v as String),
+          $checkedConvert(json, 'secondary_text', (v) => v as String?),
     );
     return val;
   }, fieldKeyMap: const {
@@ -34,6 +32,6 @@ Map<String, dynamic> _$StructuredFormattingToJson(
     <String, dynamic>{
       'main_text': instance.mainText,
       'main_text_matched_substrings':
-          instance.mainTextMatchedSubstrings?.map((e) => e?.toJson())?.toList(),
+          instance.mainTextMatchedSubstrings?.map((e) => e.toJson()).toList(),
       'secondary_text': instance.secondaryText,
     };

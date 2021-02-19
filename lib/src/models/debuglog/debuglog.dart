@@ -14,10 +14,10 @@ class DebugLog extends Equatable {
     this.line,
   });
 
-  final List<dynamic> line;
+  final List<dynamic>? line;
 
   DebugLog copyWith({
-    List<dynamic> line,
+    List<dynamic>? line,
   }) =>
       DebugLog(
         line: line ?? this.line,
@@ -26,7 +26,7 @@ class DebugLog extends Equatable {
       _$DebugLogFromJson(json);
   Map<String, dynamic> toJson() => _$DebugLogToJson(this);
   @override
-  List<Object> get props => [line];
+  List<Object?> get props => [line];
   @override
   bool get stringify => true;
 }

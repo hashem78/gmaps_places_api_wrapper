@@ -16,15 +16,15 @@ class Term extends Equatable {
     this.offset,
   });
 
-  final int length;
-  final int offset;
-  final String value;
+  final int? length;
+  final int? offset;
+  final String? value;
 
   factory Term.fromJson(Map<String, dynamic> json) => _$TermFromJson(json);
   Map<String, dynamic> toJson() => _$TermToJson(this);
 
   @override
-  List<Object> get props => [length, value, offset];
+  List<Object?> get props => [length, value, offset];
 
   @override
   bool get stringify => true;

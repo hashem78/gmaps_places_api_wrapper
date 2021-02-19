@@ -22,20 +22,20 @@ class Candidate extends Equatable {
     this.rating,
   });
 
-  final String formattedAddress;
-  final Geometry geometry;
-  final String name;
-  final OpeningHours openingHours;
-  final List<Photo> photos;
-  final double rating;
+  final String? formattedAddress;
+  final Geometry? geometry;
+  final String? name;
+  final OpeningHours? openingHours;
+  final List<Photo>? photos;
+  final double? rating;
 
   Candidate copyWith({
-    String formattedAddress,
-    Geometry geometry,
-    String name,
-    OpeningHours openingHours,
-    List<Photo> photos,
-    double rating,
+    String? formattedAddress,
+    Geometry? geometry,
+    String? name,
+    OpeningHours? openingHours,
+    List<Photo>? photos,
+    double? rating,
   }) =>
       Candidate(
         formattedAddress: formattedAddress ?? this.formattedAddress,
@@ -50,7 +50,7 @@ class Candidate extends Equatable {
   Map<String, dynamic> toJson() => _$CandidateToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         formattedAddress,
         geometry,
         name,

@@ -19,14 +19,14 @@ class PlaceDetailsResponse extends Equatable {
     this.status,
   });
 
-  final List<dynamic> htmlAttributions;
-  final PlaceDetailsResult result;
-  final ResponseStatus status;
+  final List<dynamic>? htmlAttributions;
+  final PlaceDetailsResult? result;
+  final ResponseStatus? status;
   factory PlaceDetailsResponse.fromJson(Map<String, dynamic> json) =>
       _$PlaceDetailsResponseFromJson(json);
   Map<String, dynamic> toJson() => _$PlaceDetailsResponseToJson(this);
   @override
-  List<Object> get props => [htmlAttributions, result, status];
+  List<Object?> get props => [htmlAttributions, result, status];
 
   @override
   bool get stringify => true;

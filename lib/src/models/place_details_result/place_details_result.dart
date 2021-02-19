@@ -41,34 +41,34 @@ class PlaceDetailsResult extends Equatable {
     this.website,
   });
 
-  final List<AddressComponent> addressComponents;
-  final String adrAddress;
-  final String businessStatus;
-  final String formattedAddress;
-  final String formattedPhoneNumber;
-  final Geometry geometry;
-  final String icon;
-  final String internationalPhoneNumber;
-  final String name;
-  final OpeningHours openingHours;
-  final List<Photo> photos;
-  final String placeId;
-  final PlusCode plusCode;
-  final double rating;
-  final List<Review> reviews;
-  final List<String> types;
-  final String url;
-  final int userRatingsTotal;
-  final int utcOffset;
-  final String vicinity;
-  final String website;
+  final List<AddressComponent>? addressComponents;
+  final String? adrAddress;
+  final String? businessStatus;
+  final String? formattedAddress;
+  final String? formattedPhoneNumber;
+  final Geometry? geometry;
+  final String? icon;
+  final String? internationalPhoneNumber;
+  final String? name;
+  final OpeningHours? openingHours;
+  final List<Photo>? photos;
+  final String? placeId;
+  final PlusCode? plusCode;
+  final double? rating;
+  final List<Review>? reviews;
+  final List<String>? types;
+  final String? url;
+  final int? userRatingsTotal;
+  final int? utcOffset;
+  final String? vicinity;
+  final String? website;
 
   factory PlaceDetailsResult.fromJson(Map<String, dynamic> json) =>
       _$PlaceDetailsResultFromJson(json);
   Map<String, dynamic> toJson() => _$PlaceDetailsResultToJson(this);
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       addressComponents,
       adrAddress,

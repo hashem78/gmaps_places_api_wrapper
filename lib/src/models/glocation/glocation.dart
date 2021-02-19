@@ -15,12 +15,12 @@ class GLocation extends Equatable {
     this.lng,
   });
 
-  final double lat;
-  final double lng;
+  final double? lat;
+  final double? lng;
 
   GLocation copyWith({
-    double lat,
-    double lng,
+    double? lat,
+    double? lng,
   }) =>
       GLocation(
         lat: lat ?? this.lat,
@@ -28,7 +28,7 @@ class GLocation extends Equatable {
       );
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         lat,
         lng,
       ];

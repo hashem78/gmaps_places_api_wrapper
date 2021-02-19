@@ -9,16 +9,16 @@ part of 'review.dart';
 Review _$ReviewFromJson(Map<String, dynamic> json) {
   return $checkedNew('Review', json, () {
     final val = Review(
-      authorName: $checkedConvert(json, 'author_name', (v) => v as String),
-      authorUrl: $checkedConvert(json, 'author_url', (v) => v as String),
-      language: $checkedConvert(json, 'language', (v) => v as String),
+      authorName: $checkedConvert(json, 'author_name', (v) => v as String?),
+      authorUrl: $checkedConvert(json, 'author_url', (v) => v as String?),
+      language: $checkedConvert(json, 'language', (v) => v as String?),
       profilePhotoUrl:
-          $checkedConvert(json, 'profile_photo_url', (v) => v as String),
-      rating: $checkedConvert(json, 'rating', (v) => v as int),
+          $checkedConvert(json, 'profile_photo_url', (v) => v as String?),
+      rating: $checkedConvert(json, 'rating', (v) => v as int?),
       relativeTimeDescription: $checkedConvert(
-          json, 'relative_time_description', (v) => v as String),
-      text: $checkedConvert(json, 'text', (v) => v as String),
-      time: $checkedConvert(json, 'time', (v) => v as int),
+          json, 'relative_time_description', (v) => v as String?),
+      text: $checkedConvert(json, 'text', (v) => v as String?),
+      time: $checkedConvert(json, 'time', (v) => v as int?),
     );
     return val;
   }, fieldKeyMap: const {

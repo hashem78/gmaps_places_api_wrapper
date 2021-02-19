@@ -34,27 +34,27 @@ class TextSearchResult extends Equatable {
     this.userRatingsTotal,
   });
 
-  final BusinessStatus businessStatus;
-  final String formattedAddress;
-  final Geometry geometry;
-  final String icon;
-  final String name;
-  final OpeningHours openingHours;
-  final List<Photo> photos;
-  final String placeId;
-  final PlusCode plusCode;
-  final int priceLevel;
-  final double rating;
-  final String reference;
-  final List<PlaceType> types;
-  final int userRatingsTotal;
+  final BusinessStatus? businessStatus;
+  final String? formattedAddress;
+  final Geometry? geometry;
+  final String? icon;
+  final String? name;
+  final OpeningHours? openingHours;
+  final List<Photo>? photos;
+  final String? placeId;
+  final PlusCode? plusCode;
+  final int? priceLevel;
+  final double? rating;
+  final String? reference;
+  final List<PlaceType>? types;
+  final int? userRatingsTotal;
 
   factory TextSearchResult.fromJson(Map<String, dynamic> json) =>
       _$TextSearchResultFromJson(json);
   Map<String, dynamic> toJson() => _$TextSearchResultToJson(this);
 
   @override
-  List<Object> get props {
+  List<Object?> get props {
     return [
       businessStatus,
       formattedAddress,

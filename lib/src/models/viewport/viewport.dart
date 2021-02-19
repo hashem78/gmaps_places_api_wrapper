@@ -16,12 +16,12 @@ class Viewport extends Equatable {
     this.southwest,
   });
 
-  final GLocation northeast;
-  final GLocation southwest;
+  final GLocation? northeast;
+  final GLocation? southwest;
 
   Viewport copyWith({
-    GLocation northeast,
-    GLocation southwest,
+    GLocation? northeast,
+    GLocation? southwest,
   }) =>
       Viewport(
         northeast: northeast ?? this.northeast,
@@ -32,7 +32,7 @@ class Viewport extends Equatable {
   Map<String, dynamic> toJson() => _$ViewportToJson(this);
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         northeast,
         southwest,
       ];

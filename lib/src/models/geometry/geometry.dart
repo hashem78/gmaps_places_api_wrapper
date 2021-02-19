@@ -17,12 +17,12 @@ class Geometry extends Equatable {
     this.viewport,
   });
 
-  final GLocation location;
-  final Viewport viewport;
+  final GLocation? location;
+  final Viewport? viewport;
 
   Geometry copyWith({
-    GLocation location,
-    Viewport viewport,
+    GLocation? location,
+    Viewport? viewport,
   }) =>
       Geometry(
         location: location ?? this.location,
@@ -34,5 +34,5 @@ class Geometry extends Equatable {
   @override
   bool get stringify => true;
   @override
-  List<Object> get props => [location, viewport];
+  List<Object?> get props => [location, viewport];
 }
