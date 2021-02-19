@@ -1,6 +1,6 @@
 name: gmaps_places_api_wrapper
 description: A simple wrapper that simplifies dealing with Google Maps' places API for dart 
-version: 2.0.0
+version: 2.0.0-nullsafety.0
 
 environment:
   sdk: ">=2.12.0-0 <3.0.0"
