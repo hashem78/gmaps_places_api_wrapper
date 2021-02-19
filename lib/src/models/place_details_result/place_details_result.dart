@@ -96,4 +96,53 @@ class PlaceDetailsResult extends Equatable {
 
   @override
   bool get stringify => true;
+
+  PlaceDetailsResult copyWith({
+    List<AddressComponent>? addressComponents,
+    String? adrAddress,
+    String? businessStatus,
+    String? formattedAddress,
+    String? formattedPhoneNumber,
+    Geometry? geometry,
+    String? icon,
+    String? internationalPhoneNumber,
+    String? name,
+    OpeningHours? openingHours,
+    List<Photo>? photos,
+    String? placeId,
+    PlusCode? plusCode,
+    double? rating,
+    List<Review>? reviews,
+    List<String>? types,
+    String? url,
+    int? userRatingsTotal,
+    int? utcOffset,
+    String? vicinity,
+    String? website,
+  }) {
+    return PlaceDetailsResult(
+      addressComponents: addressComponents ?? this.addressComponents,
+      adrAddress: adrAddress ?? this.adrAddress,
+      businessStatus: businessStatus ?? this.businessStatus,
+      formattedAddress: formattedAddress ?? this.formattedAddress,
+      formattedPhoneNumber: formattedPhoneNumber ?? this.formattedPhoneNumber,
+      geometry: geometry ?? this.geometry,
+      icon: icon ?? this.icon,
+      internationalPhoneNumber:
+          internationalPhoneNumber ?? this.internationalPhoneNumber,
+      name: name ?? this.name,
+      openingHours: openingHours ?? this.openingHours,
+      photos: photos ?? this.photos,
+      placeId: placeId ?? this.placeId,
+      plusCode: plusCode ?? this.plusCode,
+      rating: rating ?? this.rating,
+      reviews: reviews ?? this.reviews,
+      types: types ?? this.types,
+      url: url ?? this.url,
+      userRatingsTotal: userRatingsTotal ?? this.userRatingsTotal,
+      utcOffset: utcOffset ?? this.utcOffset,
+      vicinity: vicinity ?? this.vicinity,
+      website: website ?? this.website,
+    );
+  }
 }

@@ -28,4 +28,16 @@ class Term extends Equatable {
 
   @override
   bool get stringify => true;
+
+  Term copyWith({
+    int? length,
+    int? offset,
+    String? value,
+  }) {
+    return Term(
+      length: length ?? this.length,
+      offset: offset ?? this.offset,
+      value: value ?? this.value,
+    );
+  }
 }

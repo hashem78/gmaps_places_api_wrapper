@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 import 'package:gmaps_places_api_wrapper/src/models/place_details_result/place_details_result.dart';
 
 part 'place_details_response.g.dart';
@@ -30,4 +30,16 @@ class PlaceDetailsResponse extends Equatable {
 
   @override
   bool get stringify => true;
+
+  PlaceDetailsResponse copyWith({
+    List<dynamic>? htmlAttributions,
+    PlaceDetailsResult? result,
+    ResponseStatus? status,
+  }) {
+    return PlaceDetailsResponse(
+      htmlAttributions: htmlAttributions ?? this.htmlAttributions,
+      result: result ?? this.result,
+      status: status ?? this.status,
+    );
+  }
 }

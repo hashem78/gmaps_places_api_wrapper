@@ -10,8 +10,8 @@ part 'sub_period.g.dart';
   fieldRename: FieldRename.snake,
 )
 class SubPeriod extends Equatable {
-  final int day;
-  final String time;
+  final int? day;
+  final String? time;
 
   const SubPeriod(this.day, this.time);
 
@@ -20,8 +20,18 @@ class SubPeriod extends Equatable {
   Map<String, dynamic> toJson() => _$SubPeriodToJson(this);
 
   @override
-  List<Object> get props => [day, time];
+  List<Object?> get props => [day, time];
 
   @override
   bool get stringify => true;
+
+  SubPeriod copyWith({
+    int? day,
+    String? time,
+  }) {
+    return SubPeriod(
+      day ?? this.day,
+      time ?? this.time,
+    );
+  }
 }

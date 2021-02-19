@@ -1,10 +1,9 @@
 import 'package:equatable/equatable.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/enums.dart';
 import 'package:json_annotation/json_annotation.dart';
 
+import 'package:gmaps_places_api_wrapper/src/enums/enums.dart';
 import 'package:gmaps_places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
 import 'package:gmaps_places_api_wrapper/src/models/structuredformatting/structuredformatting.dart';
-
 import 'package:gmaps_places_api_wrapper/src/models/term/term.dart';
 
 part 'prediction.g.dart';
@@ -58,4 +57,28 @@ class Prediction extends Equatable {
 
   @override
   bool get stringify => true;
+
+  Prediction copyWith({
+    String? description,
+    int? distanceMeters,
+    String? id,
+    List<MatchedSubstring>? matchedSubstrings,
+    String? placeId,
+    String? reference,
+    List<Term>? terms,
+    List<PlaceType>? types,
+    StructuredFormatting? structuredFormatting,
+  }) {
+    return Prediction(
+      description: description ?? this.description,
+      distanceMeters: distanceMeters ?? this.distanceMeters,
+      id: id ?? this.id,
+      matchedSubstrings: matchedSubstrings ?? this.matchedSubstrings,
+      placeId: placeId ?? this.placeId,
+      reference: reference ?? this.reference,
+      terms: terms ?? this.terms,
+      types: types ?? this.types,
+      structuredFormatting: structuredFormatting ?? this.structuredFormatting,
+    );
+  }
 }

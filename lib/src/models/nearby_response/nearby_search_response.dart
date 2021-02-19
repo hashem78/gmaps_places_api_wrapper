@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 import 'package:gmaps_places_api_wrapper/src/models/nearby_result/nearby_search_result.dart';
 
 part 'nearby_search_response.g.dart';
@@ -38,4 +38,18 @@ class NearbySearchResponse extends Equatable {
       ];
   @override
   bool get stringify => true;
+
+  NearbySearchResponse copyWith({
+    List<dynamic>? htmlAttributions,
+    String? nextPageToken,
+    List<NearbySearchResult>? results,
+    ResponseStatus? status,
+  }) {
+    return NearbySearchResponse(
+      htmlAttributions: htmlAttributions ?? this.htmlAttributions,
+      nextPageToken: nextPageToken ?? this.nextPageToken,
+      results: results ?? this.results,
+      status: status ?? this.status,
+    );
+  }
 }

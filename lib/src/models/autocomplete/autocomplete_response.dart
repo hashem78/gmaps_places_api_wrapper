@@ -29,4 +29,14 @@ class AutocompleteResponse extends Equatable {
 
   @override
   bool get stringify => true;
+
+  AutocompleteResponse copyWith({
+    ResponseStatus? status,
+    List<Prediction>? predictions,
+  }) {
+    return AutocompleteResponse(
+      status: status ?? this.status,
+      predictions: predictions ?? this.predictions,
+    );
+  }
 }

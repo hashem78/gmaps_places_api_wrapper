@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 import 'package:gmaps_places_api_wrapper/src/models/matchedsubstring/matchedsubstring.dart';
 
 part 'structuredformatting.g.dart';
@@ -31,4 +32,17 @@ class StructuredFormatting extends Equatable {
 
   @override
   bool get stringify => true;
+
+  StructuredFormatting copyWith({
+    String? mainText,
+    List<MatchedSubstring>? mainTextMatchedSubstrings,
+    String? secondaryText,
+  }) {
+    return StructuredFormatting(
+      mainText: mainText ?? this.mainText,
+      mainTextMatchedSubstrings:
+          mainTextMatchedSubstrings ?? this.mainTextMatchedSubstrings,
+      secondaryText: secondaryText ?? this.secondaryText,
+    );
+  }
 }

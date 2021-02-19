@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/place_types.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 import 'package:gmaps_places_api_wrapper/src/enums/bussiness_status.dart';
-
+import 'package:gmaps_places_api_wrapper/src/enums/place_types.dart';
 import 'package:gmaps_places_api_wrapper/src/models/geometry/geometry.dart';
 import 'package:gmaps_places_api_wrapper/src/models/opening_hours/openinghours.dart';
 import 'package:gmaps_places_api_wrapper/src/models/photo/photos.dart';
@@ -79,4 +78,40 @@ class NearbySearchResult extends Equatable {
 
   @override
   bool get stringify => true;
+
+  NearbySearchResult copyWith({
+    BusinessStatus? businessStatus,
+    Geometry? geometry,
+    String? icon,
+    String? name,
+    OpeningHours? openingHours,
+    List<Photo>? photos,
+    String? placeId,
+    PlusCode? plusCode,
+    int? priceLevel,
+    double? rating,
+    String? reference,
+    List<PlaceType>? types,
+    int? userRatingsTotal,
+    String? vicinity,
+    bool? permanentlyClosed,
+  }) {
+    return NearbySearchResult(
+      businessStatus: businessStatus ?? this.businessStatus,
+      geometry: geometry ?? this.geometry,
+      icon: icon ?? this.icon,
+      name: name ?? this.name,
+      openingHours: openingHours ?? this.openingHours,
+      photos: photos ?? this.photos,
+      placeId: placeId ?? this.placeId,
+      plusCode: plusCode ?? this.plusCode,
+      priceLevel: priceLevel ?? this.priceLevel,
+      rating: rating ?? this.rating,
+      reference: reference ?? this.reference,
+      types: types ?? this.types,
+      userRatingsTotal: userRatingsTotal ?? this.userRatingsTotal,
+      vicinity: vicinity ?? this.vicinity,
+      permanentlyClosed: permanentlyClosed ?? this.permanentlyClosed,
+    );
+  }
 }

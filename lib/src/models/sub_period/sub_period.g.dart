@@ -9,8 +9,8 @@ part of 'sub_period.dart';
 SubPeriod _$SubPeriodFromJson(Map<String, dynamic> json) {
   return $checkedNew('SubPeriod', json, () {
     final val = SubPeriod(
-      $checkedConvert(json, 'day', (v) => v as int),
-      $checkedConvert(json, 'time', (v) => v as String),
+      $checkedConvert(json, 'day', (v) => v as int?),
+      $checkedConvert(json, 'time', (v) => v as String?),
     );
     return val;
   });

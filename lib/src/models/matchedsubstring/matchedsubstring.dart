@@ -27,4 +27,14 @@ class MatchedSubstring extends Equatable {
 
   @override
   bool get stringify => true;
+
+  MatchedSubstring copyWith({
+    int? length,
+    int? offset,
+  }) {
+    return MatchedSubstring(
+      length: length ?? this.length,
+      offset: offset ?? this.offset,
+    );
+  }
 }

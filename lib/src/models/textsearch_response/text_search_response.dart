@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
-import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 
+import 'package:gmaps_places_api_wrapper/src/enums/response_status.dart';
 import 'package:gmaps_places_api_wrapper/src/models/textsearch_result/text_search_result.dart';
 
 part 'text_search_response.g.dart';
@@ -39,4 +39,18 @@ class TextSearchResponse extends Equatable {
 
   @override
   bool get stringify => true;
+
+  TextSearchResponse copyWith({
+    List<dynamic>? htmlAttributions,
+    String? nextPageToken,
+    List<TextSearchResult>? results,
+    ResponseStatus? status,
+  }) {
+    return TextSearchResponse(
+      htmlAttributions: htmlAttributions ?? this.htmlAttributions,
+      nextPageToken: nextPageToken ?? this.nextPageToken,
+      results: results ?? this.results,
+      status: status ?? this.status,
+    );
+  }
 }

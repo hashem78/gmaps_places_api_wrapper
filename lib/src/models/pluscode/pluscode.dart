@@ -25,4 +25,14 @@ class PlusCode extends Equatable {
   List<Object?> get props => [compoundCode, globalCode];
   @override
   bool get stringify => true;
+
+  PlusCode copyWith({
+    String? compoundCode,
+    String? globalCode,
+  }) {
+    return PlusCode(
+      compoundCode: compoundCode ?? this.compoundCode,
+      globalCode: globalCode ?? this.globalCode,
+    );
+  }
 }

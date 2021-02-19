@@ -48,4 +48,27 @@ class Review extends Equatable {
 
   @override
   bool get stringify => true;
+
+  Review copyWith({
+    String? authorName,
+    String? authorUrl,
+    String? language,
+    String? profilePhotoUrl,
+    int? rating,
+    String? relativeTimeDescription,
+    String? text,
+    int? time,
+  }) {
+    return Review(
+      authorName: authorName ?? this.authorName,
+      authorUrl: authorUrl ?? this.authorUrl,
+      language: language ?? this.language,
+      profilePhotoUrl: profilePhotoUrl ?? this.profilePhotoUrl,
+      rating: rating ?? this.rating,
+      relativeTimeDescription:
+          relativeTimeDescription ?? this.relativeTimeDescription,
+      text: text ?? this.text,
+      time: time ?? this.time,
+    );
+  }
 }

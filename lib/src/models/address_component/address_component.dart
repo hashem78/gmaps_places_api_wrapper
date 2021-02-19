@@ -28,4 +28,16 @@ class AddressComponent extends Equatable {
 
   @override
   bool get stringify => true;
+
+  AddressComponent copyWith({
+    String? longName,
+    String? shortName,
+    List<String>? types,
+  }) {
+    return AddressComponent(
+      longName: longName ?? this.longName,
+      shortName: shortName ?? this.shortName,
+      types: types ?? this.types,
+    );
+  }
 }
